@@ -16,6 +16,7 @@
 		624F8D701ECA4ABF000C20FA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624F8D6F1ECA4ABF000C20FA /* Profile.storyboard */; };
 		624F8D731ECA6403000C20FA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D721ECA6403000C20FA /* User.m */; };
 		624F8D771ECA654A000C20FA /* Developer.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D761ECA654A000C20FA /* Developer.m */; };
+		624F8D7A1ECA660D000C20FA /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D791ECA660D000C20FA /* Organization.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		624F8D721ECA6403000C20FA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		624F8D751ECA654A000C20FA /* Developer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Developer.h; sourceTree = "<group>"; };
 		624F8D761ECA654A000C20FA /* Developer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Developer.m; sourceTree = "<group>"; };
+		624F8D781ECA660D000C20FA /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
+		624F8D791ECA660D000C20FA /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +111,11 @@
 		624F8D741ECA6408000C20FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				624F8D711ECA6403000C20FA /* User.h */,
 				624F8D751ECA654A000C20FA /* Developer.h */,
 				624F8D761ECA654A000C20FA /* Developer.m */,
+				624F8D781ECA660D000C20FA /* Organization.h */,
+				624F8D791ECA660D000C20FA /* Organization.m */,
+				624F8D711ECA6403000C20FA /* User.h */,
 				624F8D721ECA6403000C20FA /* User.m */,
 			);
 			name = Models;
@@ -189,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624F8D7A1ECA660D000C20FA /* Organization.m in Sources */,
 				624F8D731ECA6403000C20FA /* User.m in Sources */,
 				624F8D5E1ECA48C6000C20FA /* ViewController.m in Sources */,
 				624F8D5B1ECA48C6000C20FA /* AppDelegate.m in Sources */,
