@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [JSAPI fetchAllDevelopers:^(NSArray<Developer *> *allDevs) {
-        NSLog(@"%@", allDevs);
+        NSLog(@"Developers: %@", allDevs);
     }];
 }
 

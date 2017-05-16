@@ -9,7 +9,7 @@
              "state": "Ohhimod"
          },
          "phone": "555-867-5309",
-         "profile-picture": "something.jpg",
+         "profilePicture": "something.jpg",
          "radius": "10 miles",
          "languages": ["carpenter", "plumber", "river dance"],
          "reviews": "4 stars",
@@ -37,8 +37,8 @@
                                  "npoID": "4535655",
                                  "rating": "4",
                                  "desc": "this dev really devs hard",
-                                 "date_start": "5-15-16",
-                                 "date_end": "5-6-33"
+                                 "dateStart": "5-15-16",
+                                 "dateEnd": "5-6-33"
                              }
                          }]
                      }
@@ -74,8 +74,8 @@
                  "npoID": "4535655",
                  "rating": "4",
                  "desc": "this dev really devs hard",
-                 "date_start": "5-15-16",
-                 "date_end": "5-6-33"
+                 "dateStart": "5-15-16",
+                 "dateEnd": "5-6-33"
              }
          }]
      },
@@ -106,7 +106,7 @@
          "npoID": "4535655",
          "rating": "4",
          "desc": "this dev really devs hard",
-         "date_start": "5-15-16",
-         "date_end": "5-6-33"
+         "dateStart": "5-15-16",
+         "dateEnd": "5-6-33"
      }
- } 
+ }
