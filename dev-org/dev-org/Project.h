@@ -12,9 +12,9 @@
 
 @interface Project : NSObject
 
-@property (strong, nonatomic) Organization *organization;
+@property (strong, nonatomic) Organization *npoId;
 @property (strong, nonatomic) NSString *service;
-@property (strong, nonatomic) NSArray *developerIDs;
+@property (strong, nonatomic) NSArray *devs;
 @property (strong, nonatomic) NSArray<Review *> *reviews;
 @property (strong, nonatomic) NSString *projectDescription;
 
