@@ -10,6 +10,9 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) NSArray *allDevs;
+@property (strong, nonatomic) NSArray *allOrgs;
+
 @end
 
 @implementation ViewController
@@ -17,13 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
     [JSAPI fetchAllDevelopers:^(NSArray<Developer *> *allDevs) {
-        NSLog(@"Developers: %@", allDevs);
-        if (allDevs[0].isAvailable) {
-            NSLog(@"Developer is available");
-        } else {
-            NSLog(@"Developer is NOT available");
-        }
+        self.allDevs = allDevs;
+        NSLog(@"Developers: %@", self.allDevs);
+    }];
+
+    [JSAPI fetchAllOrganizations:^(NSArray<Organization *> *allOrganizations) {
+        self.allOrgs = allOrganizations;
+        NSLog(@"Organizations: %@", self.allOrgs);
     }];
 }
 
