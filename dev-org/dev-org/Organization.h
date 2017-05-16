@@ -10,7 +10,7 @@
 
 @interface Organization : User
 
-@property (strong, nonatomic) NSString* orgName;
+@property (strong, nonatomic) NSString* org;
 @property (strong, nonatomic) NSArray* projects;
 
 @end
