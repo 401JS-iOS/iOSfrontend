@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSAPI.h"
 
 @interface ViewController : UIViewController
 
