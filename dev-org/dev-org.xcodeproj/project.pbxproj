@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2806DB411ECA61B300126188 /* DevRequestsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2806DB3F1ECA61B300126188 /* DevRequestsTableViewCell.m */; };
+		2806DB421ECA61B300126188 /* DevRequestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2806DB401ECA61B300126188 /* DevRequestsTableViewCell.xib */; };
 		624F8D581ECA48C6000C20FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D571ECA48C6000C20FA /* main.m */; };
 		624F8D5B1ECA48C6000C20FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D5A1ECA48C6000C20FA /* AppDelegate.m */; };
 		624F8D5E1ECA48C6000C20FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D5D1ECA48C6000C20FA /* ViewController.m */; };
@@ -20,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2806DB3E1ECA61B300126188 /* DevRequestsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevRequestsTableViewCell.h; sourceTree = "<group>"; };
+		2806DB3F1ECA61B300126188 /* DevRequestsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevRequestsTableViewCell.m; sourceTree = "<group>"; };
+		2806DB401ECA61B300126188 /* DevRequestsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevRequestsTableViewCell.xib; sourceTree = "<group>"; };
 		624F8D531ECA48C6000C20FA /* dev-org.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-org.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		624F8D571ECA48C6000C20FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		624F8D591ECA48C6000C20FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				624F8D5F1ECA48C6000C20FA /* Main.storyboard */,
+				2806DB3E1ECA61B300126188 /* DevRequestsTableViewCell.h */,
+				2806DB3F1ECA61B300126188 /* DevRequestsTableViewCell.m */,
+				2806DB401ECA61B300126188 /* DevRequestsTableViewCell.xib */,
 				624F8D6F1ECA4ABF000C20FA /* Profile.storyboard */,
 				624F8D641ECA48C6000C20FA /* LaunchScreen.storyboard */,
 			);
@@ -152,7 +160,7 @@
 				TargetAttributes = {
 					624F8D521ECA48C6000C20FA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 4C7AR59H6U;
+						DevelopmentTeam = 5EB567WJ73;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -180,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2806DB421ECA61B300126188 /* DevRequestsTableViewCell.xib in Resources */,
 				624F8D661ECA48C6000C20FA /* LaunchScreen.storyboard in Resources */,
 				624F8D631ECA48C6000C20FA /* Assets.xcassets in Resources */,
 				624F8D701ECA4ABF000C20FA /* Profile.storyboard in Resources */,
@@ -200,6 +209,7 @@
 				624F8D5B1ECA48C6000C20FA /* AppDelegate.m in Sources */,
 				624F8D581ECA48C6000C20FA /* main.m in Sources */,
 				624F8D771ECA654A000C20FA /* Developer.m in Sources */,
+				2806DB411ECA61B300126188 /* DevRequestsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4C7AR59H6U;
+				DEVELOPMENT_TEAM = 5EB567WJ73;
 				INFOPLIST_FILE = "dev-org/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roberthatfield.dev-org";
@@ -333,7 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4C7AR59H6U;
+				DEVELOPMENT_TEAM = 5EB567WJ73;
 				INFOPLIST_FILE = "dev-org/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roberthatfield.dev-org";
@@ -360,6 +370,7 @@
 				624F8D6C1ECA48C6000C20FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
