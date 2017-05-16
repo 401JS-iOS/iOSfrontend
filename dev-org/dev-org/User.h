@@ -11,11 +11,14 @@
 
 @interface User : NSObject
 
+@property (strong, nonatomic) NSString* userID;
 @property (strong, nonatomic) NSString* username;
 @property (strong, nonatomic) NSString* email;
-@property (strong, nonatomic) NSDictionary* location;
+@property (strong, nonatomic) NSString* address;
+@property (strong, nonatomic) NSString* city;
+@property (strong, nonatomic) NSString* state;
 @property (strong, nonatomic) NSString* phone;
 @property (strong, nonatomic) UIImage* profilePicture;
-@property (strong, nonatomic) NSString* website;
+@property (strong, nonatomic) NSArray* websites;
 
 @end

@@ -11,7 +11,7 @@
 @implementation JSAPI
 
 +(void)fetchAllDevelopers:(DevCompletion)completion{
-    NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/dev"];
+    NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/devs"];
 
     
     NSURL *databaseURL = [NSURL URLWithString:urlString];
@@ -26,11 +26,13 @@
         NSLog(@"ROOT OBJECT:%@", rootObject);
         
         NSMutableArray *allDevs = [[NSMutableArray alloc]init];
-        // Commenting out until object properties match JSON returned
-        Developer *dev = [[Developer alloc] init];
-        [dev setValuesForKeysWithDictionary:rootObject];
-        [allDevs addObject:dev];
         
+        for (NSDictionary *devDictionary in rootObject) {
+            Developer *dev = [[Developer alloc] init];
+            [dev setValuesForKeysWithDictionary:devDictionary];
+            [allDevs addObject:dev];
+        }
+            
         if (completion) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion([allDevs copy]);
