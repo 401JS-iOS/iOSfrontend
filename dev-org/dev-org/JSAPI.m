@@ -27,9 +27,9 @@
         
         NSMutableArray *allDevs = [[NSMutableArray alloc]init];
         // Commenting out until object properties match JSON returned
-//        Developer *dev = [[Developer alloc] init];
-//        [dev setValuesForKeysWithDictionary:rootObject];
-//        [allDevs addObject:dev];
+        Developer *dev = [[Developer alloc] init];
+        [dev setValuesForKeysWithDictionary:rootObject];
+        [allDevs addObject:dev];
         
         if (completion) {
             dispatch_async(dispatch_get_main_queue(), ^{

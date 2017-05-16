@@ -13,5 +13,7 @@
 @property (strong, nonatomic) NSArray *languages;
 @property (strong, nonatomic) NSArray *services;
 @property (nonatomic) Boolean isAvailable;
+@property (strong, nonatomic) NSString *radius;
+@property (strong, nonatomic) NSArray *projects;
 
 @end
