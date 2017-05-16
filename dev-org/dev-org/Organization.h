@@ -12,6 +12,5 @@
 
 @property (strong, nonatomic) NSString* orgName;
 @property (strong, nonatomic) NSArray* projects;
-@property (strong, nonatomic) NSArray* developers;
 
 @end
