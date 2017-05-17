@@ -128,7 +128,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4O-1Y-KXO">
-                                <rect key="frame" x="0.0" y="107" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="89" width="375" height="216"/>
                                 <accessibility key="accessibilityConfiguration" label="Project type">
                                     <accessibilityTraits key="traits" image="YES" playsSound="YES" updatesFrequently="YES" searchField="YES" adjustable="YES"/>
                                     <bool key="isElement" value="YES"/>
@@ -160,13 +160,13 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gk9-Ne-rcr">
-                                <rect key="frame" x="37" y="380" width="300" height="203"/>
+                                <rect key="frame" x="37" y="334" width="300" height="241"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9MI-QC-hRc">
-                                <rect key="frame" x="144" y="331" width="88" height="21"/>
+                                <rect key="frame" x="144" y="305" width="88" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -174,16 +174,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9MI-QC-hRc" firstAttribute="top" secondItem="Z4O-1Y-KXO" secondAttribute="bottom" constant="8" id="2fs-RS-WQB"/>
-                            <constraint firstItem="Gk9-Ne-rcr" firstAttribute="top" secondItem="9MI-QC-hRc" secondAttribute="bottom" constant="28" id="31d-xM-Ekh"/>
+                            <constraint firstItem="9MI-QC-hRc" firstAttribute="top" secondItem="Z4O-1Y-KXO" secondAttribute="bottom" id="2fs-RS-WQB"/>
+                            <constraint firstItem="Gk9-Ne-rcr" firstAttribute="top" secondItem="9MI-QC-hRc" secondAttribute="bottom" constant="8" id="31d-xM-Ekh"/>
                             <constraint firstItem="zsg-ze-x1a" firstAttribute="centerX" secondItem="d1I-lI-xxO" secondAttribute="centerX" id="5fs-8l-huP"/>
                             <constraint firstItem="fQG-ez-Cvy" firstAttribute="top" secondItem="bVU-tG-99W" secondAttribute="bottom" constant="10" id="8kp-EZ-sS7"/>
                             <constraint firstItem="Dwv-hX-ETM" firstAttribute="top" secondItem="fQG-ez-Cvy" secondAttribute="bottom" constant="8" id="9tB-41-D7I"/>
-                            <constraint firstItem="d1I-lI-xxO" firstAttribute="top" secondItem="Gk9-Ne-rcr" secondAttribute="bottom" constant="8" id="BBK-5w-fFP"/>
+                            <constraint firstItem="d1I-lI-xxO" firstAttribute="top" secondItem="Gk9-Ne-rcr" secondAttribute="bottom" constant="16" id="BBK-5w-fFP"/>
                             <constraint firstItem="d1I-lI-xxO" firstAttribute="centerX" secondItem="FFz-fq-bar" secondAttribute="centerX" id="EIq-GU-nvy"/>
                             <constraint firstItem="fQG-ez-Cvy" firstAttribute="centerX" secondItem="FFz-fq-bar" secondAttribute="centerX" id="GRU-am-gXs"/>
                             <constraint firstItem="Z4O-1Y-KXO" firstAttribute="width" secondItem="FFz-fq-bar" secondAttribute="width" id="JOC-U9-axF"/>
-                            <constraint firstItem="Z4O-1Y-KXO" firstAttribute="top" secondItem="Dwv-hX-ETM" secondAttribute="bottom" constant="18" id="OnQ-O8-YZk"/>
+                            <constraint firstItem="Z4O-1Y-KXO" firstAttribute="top" secondItem="Dwv-hX-ETM" secondAttribute="bottom" id="OnQ-O8-YZk"/>
                             <constraint firstItem="9MI-QC-hRc" firstAttribute="centerX" secondItem="FFz-fq-bar" secondAttribute="centerX" id="YgZ-ia-MfH"/>
                             <constraint firstItem="zsg-ze-x1a" firstAttribute="top" secondItem="d1I-lI-xxO" secondAttribute="bottom" constant="8" id="dAm-Li-E1Q"/>
                             <constraint firstItem="m9y-JQ-dm9" firstAttribute="top" secondItem="zsg-ze-x1a" secondAttribute="bottom" constant="8" id="dWr-Z9-Fb6"/>
@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yl5-FM-Lf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2751.1999999999998" y="1414.5427286356824"/>
+            <point key="canvasLocation" x="2838" y="2212"/>
         </scene>
         <!--My Projects-->
         <scene sceneID="FJs-Xq-ZPT">
@@ -226,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA3-pK-e9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908" y="2265"/>
+            <point key="canvasLocation" x="908" y="2213"/>
         </scene>
         <!--Dev Profile View Controller-->
         <scene sceneID="KOL-wm-3w2">
@@ -284,7 +284,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FML-wS-lvP">
-                                <rect key="frame" x="16" y="336" width="343" height="267"/>
+                                <rect key="frame" x="16" y="345" width="343" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h5s-lz-NHS">
                                     <size key="itemSize" width="50" height="50"/>
@@ -320,8 +320,8 @@
                             <constraint firstItem="FML-wS-lvP" firstAttribute="trailing" secondItem="rP3-vI-5zY" secondAttribute="trailingMargin" id="362-So-7g6"/>
                             <constraint firstItem="cub-zZ-GQZ" firstAttribute="top" secondItem="IoT-XF-rIB" secondAttribute="bottom" constant="8" id="70Q-ma-ApI"/>
                             <constraint firstItem="bGd-FI-uVG" firstAttribute="top" secondItem="flw-Hk-LN3" secondAttribute="bottom" constant="8" id="8OG-8T-adG"/>
-                            <constraint firstItem="5Vd-rF-v5J" firstAttribute="top" secondItem="FML-wS-lvP" secondAttribute="bottom" constant="15" id="8hd-kj-8i1"/>
                             <constraint firstItem="flw-Hk-LN3" firstAttribute="centerX" secondItem="rP3-vI-5zY" secondAttribute="centerX" id="BT7-V4-V9k"/>
+                            <constraint firstItem="FML-wS-lvP" firstAttribute="top" secondItem="IoT-XF-rIB" secondAttribute="bottom" constant="8" id="ERv-N9-gui"/>
                             <constraint firstItem="IFh-hw-KdZ" firstAttribute="top" secondItem="PRm-y4-UUc" secondAttribute="bottom" id="FYo-Tl-1Cb"/>
                             <constraint firstItem="bGd-FI-uVG" firstAttribute="centerX" secondItem="rP3-vI-5zY" secondAttribute="centerX" id="G9I-Gr-5E9"/>
                             <constraint firstItem="OJU-Hm-XFi" firstAttribute="top" secondItem="67O-IV-1ty" secondAttribute="bottom" constant="8" id="IjW-VL-Cef"/>
@@ -352,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzU-4o-aP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="2265"/>
+            <point key="canvasLocation" x="2838" y="1415"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jQH-6I-OPk">
@@ -394,6 +394,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yoZ-bX-czr"/>
+        <segue reference="DDv-Te-XdW"/>
     </inferredMetricsTieBreakers>
 </document>
