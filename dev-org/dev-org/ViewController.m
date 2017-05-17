@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController ()<UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *devCollectionView;
 
 @property (strong, nonatomic) NSArray *allDevs;
@@ -22,14 +22,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-
-
     [JSAPI fetchAllOrganizations:^(NSArray<Organization *> *allOrganizations) {
         self.allOrgs = allOrganizations;
         NSLog(@"Organizations: %@", self.allOrgs);
     }];
 
-    self.devCollectionView.delegate = self;
     self.devCollectionView.dataSource = self;
 
     
@@ -47,9 +44,6 @@
 
     }];
 }
-     
-
-
 
 #pragma UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -72,21 +66,9 @@
     return cell;
 }
 
-#pragma UICollectionviewDelegate
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *selectedCell = [self.allDevs objectAtIndex:indexPath.row];
-    
-    DevProfileViewController *destVC = [[DevProfileViewController alloc]init];
-    
-    destVC.developer = [self.allDevs objectAtIndex:indexPath.row];
-
-    [self performSegueWithIdentifier:@"devProfileDetail"sender:destVC];
-    
-    NSLog(@"Developer Object %@ was selected", selectedCell);
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    [super prepareForSegue:segue sender:sender];
+    
     if ([[segue identifier]  isEqual: @"devProfileDetail"]) {
         DevProfileViewController *destVC = segue.destinationViewController;
         int index = (int)self.devCollectionView.indexPathsForSelectedItems.firstObject.row;
@@ -95,6 +77,5 @@
     }
     
 }
-
 
 @end
