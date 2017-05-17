@@ -94,6 +94,7 @@
                 NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:data
                                                                            options:NSJSONReadingMutableContainers
                                                                              error:nil];
+                NSLog(@"Project ROOT: %@", rootObject);
                 Project *project = [[Project alloc] init];
                 [project setValuesForKeysWithDictionary:rootObject];
                 

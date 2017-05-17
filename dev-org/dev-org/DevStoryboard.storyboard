@@ -52,6 +52,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="orgTableView" destination="sIn-O8-8Qo" id="hSw-M9-yNX"/>
+                        <segue destination="FmJ-xN-Y4F" kind="show" identifier="requestDetails" id="lby-dx-Cp3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IV-SW-DGi" sceneMemberID="firstResponder"/>
@@ -61,7 +62,7 @@
         <!--Request Details-->
         <scene sceneID="oI5-zH-YrT">
             <objects>
-                <viewController title="Request Details" id="FmJ-xN-Y4F" sceneMemberID="viewController">
+                <viewController title="Request Details" id="FmJ-xN-Y4F" customClass="ProjectViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0at-kL-dOi"/>
                         <viewControllerLayoutGuide type="bottom" id="rgQ-gi-ixN"/>
@@ -105,6 +106,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.51002496480000004" green="0.72223681210000001" blue="0.46467149260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="applybuttonPressed:" destination="FmJ-xN-Y4F" eventType="touchUpInside" id="o7I-OI-GWh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,6 +129,9 @@
                             <constraint firstItem="Szu-m9-CUk" firstAttribute="centerX" secondItem="ZBe-yU-Tez" secondAttribute="centerX" id="zIa-bP-vyx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="orgNameLabel" destination="Szu-m9-CUk" id="0RY-Od-lKl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtG-lS-2yW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

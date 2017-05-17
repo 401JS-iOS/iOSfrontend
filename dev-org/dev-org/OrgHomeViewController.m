@@ -52,10 +52,12 @@
     cell.devUsernameLabel.text = currentCell.username;
     
     NSString *singleService = [currentCell.services objectAtIndex:0];
-    cell.devProjectTypeLabel.text = singleService;
+    //to convert image url to rendableUIImage
+    NSString *ImageURL = @"currentCell.profilePic";
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
     
-//    commented out at the moment until there is an actual image, causes crash.//
-//    cell.devProfileImage.image = currentCell.profilePicture;
+    cell.devProjectTypeLabel.text = singleService;
+    cell.devProfileImage.image = [UIImage imageWithData:imageData];;
     return cell;
 }
 
