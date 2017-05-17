@@ -14,9 +14,6 @@
 @property (strong, nonatomic) NSArray *allDevs;
 @property (strong, nonatomic) NSArray *allOrgs;
 
-@property (strong, nonatomic) NSArray *allDevs;
-@property (strong, nonatomic) NSArray *allOrgs;
-
 @end
 
 @implementation ViewController
@@ -30,6 +27,7 @@
     [JSAPI fetchAllOrganizations:^(NSArray<Organization *> *allOrganizations) {
         self.allOrgs = allOrganizations;
         NSLog(@"Organizations: %@", self.allOrgs);
+    }];
 
     self.devCollectionView.delegate = self;
     self.devCollectionView.dataSource = self;
@@ -49,11 +47,8 @@
 
     }];
 }
+     
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-   
-}
 
 
 #pragma UICollectionViewDataSource
