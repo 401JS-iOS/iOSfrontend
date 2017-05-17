@@ -15,7 +15,7 @@
         <!--Requests-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Requests" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Requests" id="BYZ-38-t0r" customClass="OrgHomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -51,6 +51,9 @@
                     <navigationItem key="navigationItem" title="Requests" id="srv-Oz-oME">
                         <barButtonItem key="rightBarButtonItem" title="Edit Profile" id="5dJ-Qo-yxc"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="orgTableView" destination="n7e-J5-IAr" id="quu-5S-nbF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

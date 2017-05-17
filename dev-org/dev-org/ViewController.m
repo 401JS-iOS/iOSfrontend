@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *devCollectionView;
 
 @property (strong, nonatomic) NSArray *allDevs;
-@property (strong, nonatomic) NSArray *allOrgs;
+
 
 @end
 
@@ -20,15 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-    [JSAPI fetchAllOrganizations:^(NSArray<Organization *> *allOrganizations) {
-        self.allOrgs = allOrganizations;
-        NSLog(@"Organizations: %@", self.allOrgs);
-    }];
 
     self.devCollectionView.dataSource = self;
-
     
     [JSAPI fetchAllDevelopers:^(NSArray<Developer *> *allDevs) {
         NSLog(@"Developers: %@", allDevs);
