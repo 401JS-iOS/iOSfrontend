@@ -42,14 +42,16 @@
         NSLog(@"User ID is: %@", self.user.userID);
         NSLog(@"Developer: %hhu", self.user.isDev);
         
+        NSLog(@"%@", self.user.description);
+        
         if (self.user.isDev) {
             NSLog(@"I'm a developer!");
             Developer *nowDev = (Developer *)self.user;
-            NSLog(@"I speak: %@", nowDev.languages);
+            [self performSegueWithIdentifier:@"showDevStoryboard" sender:self];
         } else {
             NSLog(@"I'm an organization!");
             Organization *nowOrg = (Organization *)self.user;
-            NSLog(@"Desc: %@", nowOrg.org);
+            [self performSegueWithIdentifier:@"showOrgStoryboard" sender:self];
         }
     }
     
@@ -69,19 +71,41 @@
 
 - (IBAction)createDev:(UIButton *)sender {
     Developer *newDev = [[Developer alloc] init];
+    
     newDev.userID = @"devID";
     newDev.isDev = YES;
+    newDev.username = @"MrDeveloper";
+    newDev. email = @"dev@aol.com";
+    newDev.address = @"2510 S 12th St";
+    newDev.city = @"Seattle";
+    newDev.state = @"WA";
+    newDev.phone = @"206-555-1212";
+    newDev.profilePic = @"image.jpg";
+    newDev.websites = @[@"github.com", @"devsite.com"];
     newDev.languages = [NSArray arrayWithObjects: @"Objective-C", @"Esperanto", nil];
-    newDev.isAvailable = YES;
+    newDev.services=[NSArray arrayWithObjects:@"full stack", @"iOS", @"Android", nil];
+    newDev.isAvailable=YES;
+    newDev.radius=@"10 miles";
+    
     self.user  = newDev;
     [self saveUser];
 }
 
 - (IBAction)createOrg:(UIButton *)sender {
-    Organization *newOrg = [[Organization alloc] init];
+    Organization *newOrg = [[Organization alloc ]init];
+    
     newOrg.userID = @"orgID";
     newOrg.isDev = NO;
-    newOrg.org = @"So charity, much give.";
+    newOrg.username = @"MrNPO";
+    newOrg.email = @"npo@msn";
+    newOrg.address = @"2512 S 12th St";
+    newOrg.city = @"Seattle";
+    newOrg.state = @"WA";
+    newOrg.phone = @"206-555-1212";
+    newOrg.profilePic = @"image.jpg";
+    newOrg.websites = @[@"github.com", @"devsite.com"];
+    newOrg.org = @"We are a legitimate charity.";
+    
     self.user = newOrg;
     [self saveUser];
 }

@@ -14,7 +14,6 @@
 
 @implementation Organization
 
-
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
