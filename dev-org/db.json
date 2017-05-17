@@ -7,7 +7,7 @@
         "state": "Ohhimod",
         "phone": "555-867-5309",
         "email": "carlomari@squidbilly.com",
-        "profilePicture": "something.jpg",
+        "profilePic": "something.jpg",
         "websites": ["*.com"],
         "languages": ["carpenter", "plumber", "river dance"],
         "services": ["full stack", "front end", "back end"],
@@ -18,7 +18,7 @@
                     "npo": {
                         "userID": "users._id",
                         "username": "something",
-                        "profilepic": "/logo.png",
+                        "profilePic": "/logo.png",
                         "org": "somthing give money",
                         "address": "742 Evergreen Terrace",
                         "city": "Springfield",
@@ -57,7 +57,7 @@
         "state": "Ohhimod",
         "phone": "555-867-5309",
         "email": "carlomari@squidbilly.com",
-        "profilePicture": "something.jpg",
+        "profilePic": "something.jpg",
         "websites": ["*.com"],
         "languages": ["carpenter", "plumber", "river dance"],
         "services": ["full stack", "front end", "back end"],
@@ -68,7 +68,7 @@
                     "npo": {
                         "userID": "users._id",
                         "username": "something",
-                        "profilepic": "/logo.png",
+                        "profilePic": "/logo.png",
                         "org": "somthing give money",
                         "address": "742 Evergreen Terrace",
                         "city": "Springfield",
@@ -175,7 +175,7 @@
                 "dateEnd": "5-6-33"
             }
         }],
-        "description": "I need a single page app for my NPO"
+        "projectDescription": "I need a single page app for my NPO"
     },
 
     "review": {

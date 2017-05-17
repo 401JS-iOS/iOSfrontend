@@ -14,6 +14,9 @@
 @property (strong, nonatomic) NSArray *allDevs;
 @property (strong, nonatomic) NSArray *allOrgs;
 
+@property (strong, nonatomic) NSArray *allDevs;
+@property (strong, nonatomic) NSArray *allOrgs;
+
 @end
 
 @implementation ViewController
@@ -22,6 +25,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+
+
+    [JSAPI fetchAllOrganizations:^(NSArray<Organization *> *allOrganizations) {
+        self.allOrgs = allOrganizations;
+        NSLog(@"Organizations: %@", self.allOrgs);
+
     self.devCollectionView.delegate = self;
     self.devCollectionView.dataSource = self;
 
@@ -37,6 +46,7 @@
             NSLog(@"Developer is NOT available");
         }
         [self.devCollectionView reloadData];
+
     }];
 }
 

@@ -21,6 +21,8 @@
 		624F8D731ECA6403000C20FA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D721ECA6403000C20FA /* User.m */; };
 		624F8D771ECA654A000C20FA /* Developer.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D761ECA654A000C20FA /* Developer.m */; };
 		624F8D7A1ECA660D000C20FA /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D791ECA660D000C20FA /* Organization.m */; };
+		624F8D7D1ECB8845000C20FA /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D7C1ECB8845000C20FA /* Project.m */; };
+		624F8D801ECB8A65000C20FA /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D7F1ECB8A65000C20FA /* Review.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		624F8D761ECA654A000C20FA /* Developer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Developer.m; sourceTree = "<group>"; };
 		624F8D781ECA660D000C20FA /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
 		624F8D791ECA660D000C20FA /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
+		624F8D7B1ECB8845000C20FA /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		624F8D7C1ECB8845000C20FA /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		624F8D7E1ECB8A65000C20FA /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		624F8D7F1ECB8A65000C20FA /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,10 @@
 				624F8D761ECA654A000C20FA /* Developer.m */,
 				624F8D781ECA660D000C20FA /* Organization.h */,
 				624F8D791ECA660D000C20FA /* Organization.m */,
+				624F8D7B1ECB8845000C20FA /* Project.h */,
+				624F8D7C1ECB8845000C20FA /* Project.m */,
+				624F8D7E1ECB8A65000C20FA /* Review.h */,
+				624F8D7F1ECB8A65000C20FA /* Review.m */,
 				624F8D711ECA6403000C20FA /* User.h */,
 				624F8D721ECA6403000C20FA /* User.m */,
 			);
@@ -218,12 +228,14 @@
 				2806DB471ECAB91000126188 /* JSAPI.m in Sources */,
 				2806DB4D1ECB9B2700126188 /* DevProfileViewController.m in Sources */,
 				624F8D731ECA6403000C20FA /* User.m in Sources */,
+				624F8D7D1ECB8845000C20FA /* Project.m in Sources */,
 				624F8D5E1ECA48C6000C20FA /* ViewController.m in Sources */,
 				624F8D5B1ECA48C6000C20FA /* AppDelegate.m in Sources */,
 				2806DB4A1ECB80CC00126188 /* DevCell.m in Sources */,
 				624F8D581ECA48C6000C20FA /* main.m in Sources */,
 				624F8D771ECA654A000C20FA /* Developer.m in Sources */,
 				2806DB411ECA61B300126188 /* DevRequestsTableViewCell.m in Sources */,
+				624F8D801ECB8A65000C20FA /* Review.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
