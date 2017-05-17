@@ -16,7 +16,7 @@
 
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)coder {
-    //    [super encodeWithCoder];
+    [super encodeWithCoder:coder];
     [coder encodeObject:_languages forKey:@"languages"];
     [coder encodeObject:_services forKey:@"services"];
     [coder encodeBool:_isAvailable forKey:@"isAvailable"];
@@ -25,16 +25,16 @@
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
+    self = [super initWithCoder:decoder];
     if (!self) {
         return nil;
     }
     
-    _languages = [decoder valueForKey:@"languages"];
-    _services = [decoder valueForKey:@"services"];
+    _languages = [decoder decodeObjectForKey:@"languages"];
+    _services = [decoder decodeObjectForKey:@"services"];
     _isAvailable = [decoder decodeBoolForKey:@"isAvailable"];
-    _radius = [decoder valueForKey:@"radius"];
-    _projects = [decoder valueForKey:@"projects"];
+    _radius = [decoder decodeObjectForKey:@"radius"];
+    _projects = [decoder decodeObjectForKey:@"projects"];
     
     return self;
 }

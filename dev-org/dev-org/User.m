@@ -16,6 +16,7 @@
 
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeBool:_isDev forKey:@"isDev"];
     [coder encodeObject:_userID forKey:@"userID"];
     [coder encodeObject:_username forKey:@"username"];
     [coder encodeObject:_email forKey:@"email"];
@@ -27,12 +28,13 @@
     [coder encodeObject:_websites forKey:@"websites"];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)decoder {
+- (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if (!self) {
         return nil;
     }
     
+    _isDev = [decoder decodeBoolForKey:@"isDev"];
     _userID = [decoder decodeObjectForKey:@"userID"];
     _username = [decoder decodeObjectForKey:@"username"];
     _email = [decoder decodeObjectForKey:@"email"];

@@ -17,12 +17,13 @@
 
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)coder {
+    [super encodeWithCoder:coder];
     [coder encodeObject:_org forKey:@"org"];
     [coder encodeObject:_projects forKey:@"projects"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
+    self = [super initWithCoder:decoder];
     if (!self) {
         return nil;
     }
