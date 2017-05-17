@@ -22,14 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //
-//    self.orgTableView.dataSource = self;
+    self.orgTableView.dataSource = self;
     NSString *nib = @"NPORequestsTableViewCell";
     [self.orgTableView registerNib:[UINib nibWithNibName:nib bundle:nil] forCellReuseIdentifier:nib];
     
     [JSAPI fetchAllOrganizations:^(NSArray<Organization *> *allOrganizations) {
         self.allOrgs = allOrganizations;
+        [self.orgTableView reloadData];
         NSLog(@"Organizations: %@", self.allOrgs);
     }];
+    
 }
 
 
@@ -38,11 +40,14 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
     NSString *identifier = @"NPORequestsTableViewCell";
     NPORequestsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     Organization *currentCell = self.allOrgs[indexPath.row];
     cell.orgNameLabel.text = currentCell.org;
+    NSLog(@"Organization Name:%@", currentCell.org);
 //    cell.requestTypeLabel.text = currentCell.
     return cell;
 }
