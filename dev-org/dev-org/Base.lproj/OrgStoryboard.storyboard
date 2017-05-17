@@ -97,6 +97,7 @@
                             <constraint firstItem="oXy-aP-zok" firstAttribute="centerX" secondItem="nb8-hI-fCe" secondAttribute="centerX" id="ich-Zz-bxe"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Developers" id="yn9-9t-uzt"/>
                     <navigationItem key="navigationItem" id="Q0M-af-1cf"/>
                     <connections>
                         <outlet property="devCollectionView" destination="MIb-jh-S8Z" id="5Sq-jc-yxI"/>
@@ -104,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3I-hL-XJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847.2" y="1415.4422788605698"/>
+            <point key="canvasLocation" x="908" y="1463"/>
         </scene>
         <!--New Request-->
         <scene sceneID="yIo-Sm-MRG">
@@ -200,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yl5-FM-Lf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="2212"/>
+            <point key="canvasLocation" x="1898" y="2259"/>
         </scene>
         <!--My Projects-->
         <scene sceneID="FJs-Xq-ZPT">
@@ -352,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzU-4o-aP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="1415"/>
+            <point key="canvasLocation" x="1898" y="1462"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jQH-6I-OPk">
@@ -365,35 +366,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="k9t-nY-2wP" kind="relationship" relationship="viewControllers" id="r7t-dL-ZYd"/>
-                        <segue destination="o6g-iL-eFN" kind="relationship" relationship="viewControllers" id="DJM-YG-Bnn"/>
+                        <segue destination="Wqq-GX-tfe" kind="relationship" relationship="viewControllers" id="Ppl-3y-uEY"/>
+                        <segue destination="o6g-iL-eFN" kind="relationship" relationship="viewControllers" id="9tr-ER-o4s"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZX-WS-uhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-242" y="1700"/>
         </scene>
-        <!--Developers-->
-        <scene sceneID="hHu-hy-TXi">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k9t-nY-2wP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Developers" id="uxP-5Q-j5m"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yp5-Hu-44F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Wqq-GX-tfe" kind="relationship" relationship="rootViewController" id="ruf-AJ-tye"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UEv-J8-mym" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="908" y="1415.4422788605698"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DDv-Te-XdW"/>
+        <segue reference="yoZ-bX-czr"/>
     </inferredMetricsTieBreakers>
 </document>
