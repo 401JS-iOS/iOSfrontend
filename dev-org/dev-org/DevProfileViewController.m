@@ -7,6 +7,7 @@
 //
 
 #import "DevProfileViewController.h"
+#import "NewRequestViewController.h"
 
 @interface DevProfileViewController ()
 
@@ -35,6 +36,15 @@
     
 NSLog(@"email%@",self.developer.email);
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.identifier isEqualToString:@"createNewRequest"]) {
+        NewRequestViewController *requestVC = segue.destinationViewController;
+        requestVC.developer = self.developer;
+    }
 }
 
 
