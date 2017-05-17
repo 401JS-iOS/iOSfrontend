@@ -14,7 +14,7 @@
         <!--Requests-->
         <scene sceneID="aG1-0r-6Cv">
             <objects>
-                <viewController title="Requests" id="sLF-Qx-Ozb" customClass="OrgHomeViewController" sceneMemberID="viewController">
+                <viewController title="Requests" id="sLF-Qx-Ozb" customClass="DevHomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ntU-w5-v9C"/>
                         <viewControllerLayoutGuide type="bottom" id="vxi-Vg-NWF"/>
