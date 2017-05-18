@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "Developer.h"
 #import "Organization.h"
-
+#import "JSAPIPOSTRequest.h"
 @interface MainViewController ()
 
 @property (strong, nonatomic) User *user;
@@ -40,7 +40,7 @@
         NSLog(@"No user found!");
     } else {
         NSLog(@"User ID is: %@", self.user.userID);
-        NSLog(@"Developer: %hhu", self.user.isDev);
+        NSLog(@"Developer: %@", self.user.isDev);
         
         NSLog(@"%@", self.user.description);
         
@@ -66,14 +66,19 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.user];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"user"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
+    
+    __weak typeof(self) bruce = self;
+    [JSAPIPOSTRequest postUser:self.user withCompletion:^(NSString *identifier) {
+        __strong typeof(bruce) hulk = bruce;
+        hulk.user.userToken = identifier;
+    }];
 }
 
 - (IBAction)createDev:(UIButton *)sender {
     Developer *newDev = [[Developer alloc] init];
     
     newDev.userID = @"devID";
-    newDev.isDev = YES;
+    newDev.isDev = @1;
     newDev.username = @"MrDeveloper";
     newDev. email = @"dev@aol.com";
     newDev.address = @"2510 S 12th St";
@@ -89,13 +94,24 @@
     
     self.user  = newDev;
     [self saveUser];
+    User *user = [[User alloc] init];
+    user.username = @"jay3";
+    user.email = @"jay2@com";
+    user.isDev = @1;
+    user.password = @"asdfasdf";
+
+    
+    [JSAPIPOSTRequest postUser:user withCompletion:^(NSString *identifier) {
+       
+        NSLog(@"Token:%@",identifier);
+    }];
 }
 
 - (IBAction)createOrg:(UIButton *)sender {
     Organization *newOrg = [[Organization alloc ]init];
     
     newOrg.userID = @"orgID";
-    newOrg.isDev = NO;
+    newOrg.isDev = @0;
     newOrg.username = @"MrNPO";
     newOrg.email = @"npo@msn";
     newOrg.address = @"2512 S 12th St";

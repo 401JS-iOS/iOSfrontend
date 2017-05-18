@@ -16,16 +16,14 @@
 @interface JSAPIPOSTRequest : NSObject
 
 typedef void(^ProjectPOSTCompletion)(Project *project);
-typedef void(^UserPOSTCompletion)(User *user);
+typedef void(^UserPOSTCompletion)(NSString *identifier);
 
-@property(strong, nonatomic) NSURLConnection *connection;
-@property(strong, nonatomic) NSString *email;
-@property(strong, nonatomic) NSString *username;
-@property(strong, nonatomic) NSString *password;
+
+
 @property(nonatomic) Boolean *isDev;
 
 
 +(void)postProject:(ProjectPOSTCompletion)completion;
-+(void)postUser:(UserPOSTCompletion)completion;
++ (void)postUser:(User *)user withCompletion:(UserPOSTCompletion)completion;
 
 @end
