@@ -10,6 +10,7 @@
 
 @interface Developer : User
 
+@property (strong, nonatomic) NSString *devID;
 @property (strong, nonatomic) NSArray *languages;
 @property (strong, nonatomic) NSArray *services;
 @property (nonatomic) Boolean isAvailable;
