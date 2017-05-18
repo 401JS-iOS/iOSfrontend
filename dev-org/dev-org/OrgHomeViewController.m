@@ -57,7 +57,7 @@
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
     
     cell.devProjectTypeLabel.text = singleService;
-    cell.devProfileImage.image = [UIImage imageWithData:imageData];;
+    cell.devProfileImage.image = [UIImage imageWithData:imageData];
     return cell;
 }
 

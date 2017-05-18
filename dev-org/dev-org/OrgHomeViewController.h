@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  OrgHomeViewController.h
 //  dev-org
 //
 //  Created by Robert Hatfield on 5/15/17.
