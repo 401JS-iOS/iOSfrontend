@@ -15,17 +15,15 @@
 
 @interface JSAPIPOSTRequest : NSObject
 
-typedef void(^ProjectPOSTCompletion)(Project *project);
-typedef void(^UserPOSTCompletion)(User *user);
-
-@property(strong, nonatomic) NSURLConnection *connection;
-@property(strong, nonatomic) NSString *email;
-@property(strong, nonatomic) NSString *username;
-@property(strong, nonatomic) NSString *password;
-@property(nonatomic) Boolean *isDev;
+typedef void(^ProjectPOSTCompletion)(NSDictionary *project);
+typedef void(^UserPOSTCompletion)(NSString *identifier);
+typedef void(^NPOPOSTCompletion)(NSDictionary *user);
+typedef void(^DevPOSTCompletion)(NSDictionary *user);
 
 
-+(void)postProject:(ProjectPOSTCompletion)completion;
-+(void)postUser:(UserPOSTCompletion)completion;
++(void)postProject:(Project *)project :(User *)user withCompletion:(ProjectPOSTCompletion)completion;
++ (void)postUser:(User *)user withCompletion:(UserPOSTCompletion)completion;
++ (void)postNPO:(Organization *)user withCompletion:(NPOPOSTCompletion)completion;
++ (void)postDev:(Developer *)user withCompletion:(DevPOSTCompletion)completion;
 
 @end

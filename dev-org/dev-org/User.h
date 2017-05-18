@@ -10,10 +10,11 @@
 #import <UIKit/UIKit.h>
 
 @interface User : NSObject
-
-@property (nonatomic) Boolean isDev;
+@property (strong, nonatomic) NSString* userToken;
+@property (strong, nonatomic) NSNumber* isDev;
 @property (strong, nonatomic) NSString* userID;
 @property (strong, nonatomic) NSString* username;
+@property (strong, nonatomic) NSString* password;
 @property (strong, nonatomic) NSString* email;
 @property (strong, nonatomic) NSString* address;
 @property (strong, nonatomic) NSString* city;

@@ -10,78 +10,178 @@
 
 @implementation JSAPIPOSTRequest
 
-
-
-
-+(void)postProject:(ProjectPOSTCompletion)completion{
++(void)postProject:(Project *)project :(User *)user withCompletion:(ProjectPOSTCompletion)completion{
     
-//    {
-//        "devs": [
-//                 {
-//                     "devID": "devs._id"
-//                 }
-//                 ],
-//        "npoId": {
-//            "npo": {
-//                "address": "742 Evergreen Terrace",
-//                "city": "Springfield",
-//                "email": "someorg@org.org",
-//                "org": "somthing give money",
-//                "phone": "555-5465",
-//                "profilePic": "/logo.png",
-//                "projects": [
-//                             {
-//                                 "projectID": "3475457"
-//                             }
-//                             ],
-//                "state": "Ohhimod",
-//                "userID": "users._id",
-//                "username": "something"
-//            }
-//        },
-//        "projectDescription": "I need a single page app for my NPO",
-//        "reviews": [
-//                    {
-//                        "reviewID": {
-//                            "dateEnd": "5-6-33",
-//                            "dateStart": "5-15-16",
-//                            "desc": "this dev really devs hard",
-//                            "devID": "245254",
-//                            "npoID": "4535655",
-//                            "projectID": "3463246",
-//                            "stars": 4
-//                        }
-//                    }
-//                    ],
-//        "service": "single page app"
-//    }
-    
-}
-
-+(void)postUser:(UserPOSTCompletion)completion{
-    
-    
-    NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/users"];
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/npo"];
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
-
+    NSDictionary *projectDictionary = @{@"devs": project.devs, @"npoId": project.npoId, @"projectDescription": project.projectDescription, @"reviews": project.reviews, @"service": project.service};
+    
+    NSError *error = nil;
+    NSData *userData =[NSJSONSerialization dataWithJSONObject:projectDictionary
+                                                      options:NSJSONWritingPrettyPrinted error:&error];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[databaseURL standardizedURL]];
-    [request setHTTPMethod:@"POST"];
+    request.HTTPMethod = @"POST";
+    NSString *userToken = [NSString stringWithFormat:@"Bearer %@",user.userToken];
     
-//    NSString *postData = @"email=%@&username=%@&password=%@&isDev=%@", *self.email, self.username,self.password, self.isDev;
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:userToken forHTTPHeaderField:@"Authorization"];
+    [request setHTTPBody:userData];
     
-    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-//    [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
- 
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-  
+    
+    
+    if (!error) {
+        
+        
+        [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+            
+            NSDictionary *NPOObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:NSJSONReadingMutableContainers
+                                                                        error:nil];
+            
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Token:%@", NPOObject);
+                    completion(NPOObject);
+                });
+            }
+        }] resume];
+    }
 
-//    "email": "email",
-//    "isDev": true,
-//    "password": "passwords",
-//    "username": "someuser"
     
+        
+}
+
++ (void)postUser:(User *)user withCompletion:(UserPOSTCompletion)completion{
+    
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/signup"];
+    NSURL *databaseURL = [NSURL URLWithString:urlString];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSLog(@"%@", session);
+    
+    NSDictionary *userDictionary = @{@"email":user.email, @"username":user.username, @"password":user.password, @"isDev":user.isDev};
+    NSError *error = nil;
+    NSData *userData =[NSJSONSerialization dataWithJSONObject:userDictionary
+                                                      options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[databaseURL standardizedURL]];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:userData];
+    
+    
+    
+    if (!error) {
+        
+        
+        [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+            NSString *token = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Token:%@", token);
+                    completion(token);
+                });
+            }
+        }] resume];
+    }
+}
+
++ (void)postNPO:(Organization *)user withCompletion:(NPOPOSTCompletion)completion{
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/npo"];
+    NSURL *databaseURL = [NSURL URLWithString:urlString];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSLog(@"%@", session);
+    NSDictionary *NPODictionary = @{@"org": user.org, @"city": user.city, @"state": user.state, @"phone": user.state, @"profilePic": user.profilePic, @"websites": user.websites};
+    
+    NSError *error = nil;
+    NSData *userData =[NSJSONSerialization dataWithJSONObject:NPODictionary
+                                                      options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[databaseURL standardizedURL]];
+    request.HTTPMethod = @"POST";
+    NSString *userToken = [NSString stringWithFormat:@"Bearer %@",user.userToken];
+    
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:userToken forHTTPHeaderField:@"Authorization"];
+    [request setHTTPBody:userData];
+    
+    
+    
+    if (!error) {
+        
+        
+        [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+            
+            NSDictionary *NPOObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:NSJSONReadingMutableContainers
+                                                                        error:nil];
+            
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Token:%@", NPOObject);
+                    completion(NPOObject);
+                });
+            }
+        }] resume];
+    }
+}
+
++ (void)postDev:(Developer *)user withCompletion:(DevPOSTCompletion)completion{
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/dev"];
+    NSURL *databaseURL = [NSURL URLWithString:urlString];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSLog(@"%@", session);
+    NSDictionary *devDictionary = @{@"city": user.city, @"state": user.state, @"phone": user.phone, @"profilePic": user.profilePic, @"websites": user.websites, @"languages":user.languages, @"services":user.services};
+
+    NSError *error = nil;
+    NSData *userData =[NSJSONSerialization dataWithJSONObject:devDictionary
+                                                      options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[databaseURL standardizedURL]];
+    request.HTTPMethod = @"POST";
+    NSString *userToken = [NSString stringWithFormat:@"Bearer %@",user.userToken];
+    
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:userToken forHTTPHeaderField:@"Authorization"];
+    [request setHTTPBody:userData];
+    
+    
+    
+    if (!error) {
+        
+        
+        [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+            
+            NSDictionary *devObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                       options:NSJSONReadingMutableContainers
+                                                                         error:nil];
+            
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"Token:%@", devObject);
+                    completion(devObject);
+                });
+            }
+        }] resume];
+    }
+
 }
 
 @end
