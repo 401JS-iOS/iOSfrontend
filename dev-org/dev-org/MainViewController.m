@@ -10,9 +10,15 @@
 #import "Developer.h"
 #import "Organization.h"
 #import "JSAPIPOSTRequest.h"
+
 @interface MainViewController ()
 
 @property (strong, nonatomic) User *user;
+
+@property (weak, nonatomic) IBOutlet UITextField *loginUsername;
+@property (weak, nonatomic) IBOutlet UITextField *loginPassword;
+
+@property (strong, nonatomic) UIView *defaultView;
 
 
 @end
@@ -78,9 +84,26 @@
     }];
 }
 
+- (IBAction)showSignUpViewPressed:(UIButton *)sender {
+    UIView *signUpView = [[[NSBundle mainBundle] loadNibNamed:@"SignUpView" owner:self options:nil] objectAtIndex:0];
+    
+    self.defaultView = self.view;
+    self.view = signUpView;
+}
+
+- (IBAction)createAccountPressed:(UIButton *)sender {
+    self.view = self.defaultView;
+}
+
+- (IBAction)cancelSignUpPressed:(UIButton *)sender {
+    self.view = self.defaultView;
+}
+
+
 - (IBAction)createDev:(UIButton *)sender {
     [self createDeveloper];
 }
+
 -(void)createDeveloper{
     Developer *newDev = [[Developer alloc] init];
     

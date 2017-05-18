@@ -30,6 +30,7 @@
 		624F8D831ECBE5CA000C20FA /* NewRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D821ECBE5CA000C20FA /* NewRequestViewController.m */; };
 		624F8D851ECCA304000C20FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624F8D841ECCA304000C20FA /* Main.storyboard */; };
 		624F8D881ECCD077000C20FA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D871ECCD077000C20FA /* MainViewController.m */; };
+		62C395B51ECDFF9300252344 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C395B41ECDFF9300252344 /* SignUpView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		624F8D841ECCA304000C20FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		624F8D861ECCD077000C20FA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		624F8D871ECCD077000C20FA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		62C395B41ECDFF9300252344 /* SignUpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				286DD9591ECC0CC800A03917 /* DevStoryboard.storyboard */,
 				624F8D5F1ECA48C6000C20FA /* OrgStoryboard.storyboard */,
 				624F8D841ECCA304000C20FA /* Main.storyboard */,
+				62C395B41ECDFF9300252344 /* SignUpView.xib */,
 				2806DB3E1ECA61B300126188 /* NPORequestsTableViewCell.h */,
 				2806DB3F1ECA61B300126188 /* NPORequestsTableViewCell.m */,
 				2806DB481ECB80CC00126188 /* DevCell.h */,
@@ -241,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C395B51ECDFF9300252344 /* SignUpView.xib in Resources */,
 				2806DB421ECA61B300126188 /* NPORequestsTableViewCell.xib in Resources */,
 				624F8D661ECA48C6000C20FA /* LaunchScreen.storyboard in Resources */,
 				624F8D631ECA48C6000C20FA /* Assets.xcassets in Resources */,
