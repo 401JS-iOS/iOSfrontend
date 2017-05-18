@@ -77,8 +77,8 @@
 
 -(void)userSignUp{
     User *newUser = [[User alloc] init];
-        newUser.username = @"jay9";
-        newUser.email = @"jay9@com";
+        newUser.username = @"robert";
+        newUser.email = @"robert@com";
         newUser.isDev = @1;
         newUser.password = @"1234";
         self.user = newUser;
@@ -86,7 +86,10 @@
     __weak typeof(self) bruce = self;
     [JSAPIPOSTRequest postUser:self.user withCompletion:^(NSString *identifier) {
         __strong typeof(bruce) hulk = bruce;
-        hulk.user.userToken = identifier;
+        
+        // Remove quotation marks from string before assigning to user
+        hulk.user.userToken = [identifier componentsSeparatedByString:@"\""][1];
+        
         
         if (hulk.user.isDev) {
             [hulk createDeveloper];
@@ -152,11 +155,6 @@
         
         NSString *email = [devDictionary valueForKey:@"email"];
         [hulk.user setValue:email forKey:@"email"];
-        
-        
-        newDev.username = self.user.username;
-        newDev.email = self.user.email;
-        
         
         [hulk saveUser];
     }];
