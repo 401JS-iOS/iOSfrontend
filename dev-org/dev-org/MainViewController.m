@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *loginUsername;
 @property (weak, nonatomic) IBOutlet UITextField *loginPassword;
 
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *developerSwitch;
+
 @property (strong, nonatomic) UIView *defaultView;
 
 
@@ -46,7 +51,7 @@
         NSLog(@"No user found!");
     } else {
         NSLog(@"User ID is: %@", self.user.userID);
-        NSLog(@"Developer: %@", self.user.isDev);
+        NSLog(@"Developer: %hhu", self.user.isDev);
         
         NSLog(@"%@", self.user.description);
         
@@ -62,8 +67,7 @@
     }
     
 }
-
-- (IBAction)delete:(UIBarButtonItem *)sender {
+- (IBAction)resetUser:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -75,12 +79,13 @@
     
 }
 
--(void)userSignUp{
+-(void)userSignUpWithEmail:(NSString*)email username:(NSString*)username password:(NSString*)password isDev:(Boolean)isDev {
+    
     User *newUser = [[User alloc] init];
-        newUser.username = @"robert";
-        newUser.email = @"robert@com";
-        newUser.isDev = @1;
-        newUser.password = @"1234";
+        newUser.username = username;
+        newUser.email = email;
+    newUser.password = password;
+        newUser.isDev = isDev;
         self.user = newUser;
     
     __weak typeof(self) bruce = self;
@@ -109,6 +114,7 @@
 }
 
 - (IBAction)createAccountPressed:(UIButton *)sender {
+    [self userSignUpWithEmail:self.emailTextField.text username:self.usernameTextField.text password:self.passwordTextField.text isDev:self.developerSwitch.isOn];
     self.view = self.defaultView;
 }
 
@@ -118,7 +124,7 @@
 
 
 - (IBAction)createDev:(UIButton *)sender {
-    [self userSignUp];
+//    [self userSignUp];
 }
 
 -(void)createDeveloper{
@@ -127,7 +133,7 @@
     Developer *newDev = [[Developer alloc] init];
     
     newDev.userToken = self.user.userToken;
-    newDev.isDev = @1;
+    newDev.isDev = YES;
     newDev.address = @"2510 S 12th St";
     newDev.city = @"Seattle";
     newDev.state = @"WA";
@@ -162,19 +168,16 @@
 }
 
 - (IBAction)createOrg:(UIButton *)sender {
-    [self createOrganization];
-    [self userSignUp];
+//    [self userSignUp];
 }
 
 -(void)createOrganization{
 
     Organization *newOrg = [[Organization alloc ]init];
     
-    newOrg.userID = @"orgID";
-    newOrg.isDev = @0;
-    newOrg.username = @"MrNPO";
-    newOrg.email = @"npo@msn";
-    newOrg.address = @"2512 S 12th St";
+    newOrg.userToken = self.user.userToken;
+    newOrg.isDev = NO;
+//    newOrg.address = @"2512 S 12th St";
     newOrg.city = @"Seattle";
     newOrg.state = @"WA";
     newOrg.phone = @"206-555-1212";
@@ -183,6 +186,25 @@
     newOrg.org = @"We are a legitimate charity.";
     
     self.user = newOrg;
+
+    __weak typeof(self) bruce = self;
+    [JSAPIPOSTRequest postNPO:newOrg withCompletion:^(NSDictionary *orgDictionary) {
+        __strong typeof(bruce) hulk = bruce;
+        
+        NSString *userID = [orgDictionary valueForKey:@"userID"];
+        [hulk.user setValue:userID forKey:@"userID"];
+        
+        NSString *orgID = [orgDictionary valueForKey:@"_id"];
+        [hulk.user setValue:orgID forKey:@"orgID"];
+        
+        NSString *username = [newOrg valueForKey:@"username"];
+        [hulk.user setValue:username forKey:@"username"];
+        
+        NSString *email = [newOrg valueForKey:@"email"];
+        [hulk.user setValue:email forKey:@"email"];
+        
+        [hulk saveUser];
+    }];
 
 }
 

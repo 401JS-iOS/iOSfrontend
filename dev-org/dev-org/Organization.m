@@ -17,6 +17,7 @@
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
+    [coder encodeObject:_orgID forKey:@"orgID"];
     [coder encodeObject:_org forKey:@"org"];
     [coder encodeObject:_projects forKey:@"projects"];
 }
@@ -27,6 +28,7 @@
         return nil;
     }
     
+    _orgID = [decoder decodeObjectForKey:@"orgID"];
     _org = [decoder decodeObjectForKey:@"org"];
     _projects = [decoder decodeObjectForKey:@"projects"];
     
