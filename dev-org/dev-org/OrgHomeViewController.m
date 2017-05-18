@@ -22,11 +22,11 @@
     [super viewDidLoad];
 
     self.devCollectionView.dataSource = self;
-    
+
     [JSAPI fetchAllDevelopers:^(NSArray<Developer *> *allDevs) {
         NSLog(@"Developers: %@", allDevs);
         self.allDevs = allDevs;
-        
+
         if (allDevs[0].isAvailable) {
             NSLog(@"Developer is available");
 
@@ -36,6 +36,7 @@
         [self.devCollectionView reloadData];
 
     }];
+
 }
 
 #pragma UICollectionViewDataSource
@@ -46,16 +47,16 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellIdentifier = @"DevCell";
     DevCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    
+
     Developer *currentCell = self.allDevs[indexPath.row];
-    
+
     cell.devUsernameLabel.text = currentCell.username;
-    
+
     NSString *singleService = [currentCell.services objectAtIndex:0];
     //to convert image url to rendableUIImage
     NSString *ImageURL = @"currentCell.profilePic";
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
-    
+
     cell.devProjectTypeLabel.text = singleService;
     cell.devProfileImage.image = [UIImage imageWithData:imageData];
     return cell;
@@ -63,14 +64,14 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     [super prepareForSegue:segue sender:sender];
-    
+
     if ([[segue identifier]  isEqual: @"devProfileDetail"]) {
         DevProfileViewController *destVC = segue.destinationViewController;
         int index = (int)self.devCollectionView.indexPathsForSelectedItems.firstObject.row;
         destVC.developer = [self.allDevs objectAtIndex:index];
-        
+
     }
-    
+
 }
 
 @end
