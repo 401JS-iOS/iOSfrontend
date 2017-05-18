@@ -147,6 +147,7 @@
     NSLog(@"%@", session);
     NSDictionary *devDictionary = @{@"city": user.city, @"state": user.state, @"phone": user.phone, @"profilePic": user.profilePic, @"websites": user.websites, @"languages":user.languages, @"services":user.services};
 
+
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:devDictionary
                                                       options:NSJSONWritingPrettyPrinted error:&error];
@@ -169,13 +170,17 @@
                 NSLog(@"Error: %@", error.localizedDescription);
             }
             
+            NSString *stringForm = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"String: %@", stringForm);
+            
             NSDictionary *devObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                       options:NSJSONReadingMutableContainers
+                                                                       options:kNilOptions
                                                                          error:nil];
+            NSLog(@"data: %@", data);
             
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"Token:%@", devObject);
+                    NSLog(@"devObeject:%@", devObject);
                     completion(devObject);
                 });
             }
