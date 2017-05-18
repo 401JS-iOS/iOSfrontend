@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="WNn-ko-29q">
             <objects>
-                <viewController id="79x-iv-g5o" sceneMemberID="viewController">
+                <viewController id="79x-iv-g5o" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EeM-HR-PHJ"/>
                         <viewControllerLayoutGuide type="bottom" id="QG4-rz-6DT"/>
@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Developer"/>
                                 <connections>
-                                    <segue destination="Rlg-Ox-NcO" kind="show" id="2WQ-0t-M2R"/>
+                                    <segue destination="Rlg-Ox-NcO" kind="show" identifier="showDevStoryboard" id="2WQ-0t-M2R"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SX-hO-Caj">
@@ -34,13 +34,35 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Organization"/>
                                 <connections>
-                                    <segue destination="R6L-7f-WTd" kind="show" id="XXq-Xe-jpX"/>
+                                    <segue destination="R6L-7f-WTd" kind="show" identifier="showOrgStoryboard" id="XXq-Xe-jpX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaN-VR-p7z">
+                                <rect key="frame" x="16" y="256" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="CREATE Developer"/>
+                                <connections>
+                                    <action selector="createDev:" destination="79x-iv-g5o" eventType="touchUpInside" id="sFw-Hd-eB4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsg-ee-hbH">
+                                <rect key="frame" x="16" y="491" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="CREATE Organization"/>
+                                <connections>
+                                    <action selector="createOrg:" destination="79x-iv-g5o" eventType="touchUpInside" id="01X-rv-BmW"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GB8-Rn-hEE"/>
+                    <navigationItem key="navigationItem" id="GB8-Rn-hEE">
+                        <barButtonItem key="leftBarButtonItem" title="Delete" id="aD9-Ia-lar">
+                            <connections>
+                                <action selector="delete:" destination="79x-iv-g5o" id="7oB-bQ-02z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfP-GA-gee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

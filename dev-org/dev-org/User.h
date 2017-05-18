@@ -11,6 +11,7 @@
 
 @interface User : NSObject
 
+@property (nonatomic) Boolean isDev;
 @property (strong, nonatomic) NSString* userID;
 @property (strong, nonatomic) NSString* username;
 @property (strong, nonatomic) NSString* email;
@@ -20,5 +21,8 @@
 @property (strong, nonatomic) NSString* phone;
 @property (strong, nonatomic) NSString* profilePic;
 @property (strong, nonatomic) NSArray* websites;
+
+- (instancetype)initWithCoder:(NSCoder *)decoder;
+- (void)encodeWithCoder:(NSCoder *)coder;
 
 @end
