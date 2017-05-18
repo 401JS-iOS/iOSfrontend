@@ -71,10 +71,17 @@
     [JSAPIPOSTRequest postUser:self.user withCompletion:^(NSString *identifier) {
         __strong typeof(bruce) hulk = bruce;
         hulk.user.userToken = identifier;
+        
+//        [JSAPIPOSTRequest postDev:self.user withCompletion:^(Developer *user) {
+//            <#code#>
+//        }];
     }];
 }
 
 - (IBAction)createDev:(UIButton *)sender {
+    [self createDeveloper];
+}
+-(void)createDeveloper{
     Developer *newDev = [[Developer alloc] init];
     
     newDev.userID = @"devID";
@@ -99,10 +106,10 @@
     user.email = @"jay2@com";
     user.isDev = @1;
     user.password = @"asdfasdf";
-
+    
     
     [JSAPIPOSTRequest postUser:user withCompletion:^(NSString *identifier) {
-       
+        
         NSLog(@"Token:%@",identifier);
     }];
 }
@@ -125,16 +132,5 @@
     self.user = newOrg;
     [self saveUser];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
