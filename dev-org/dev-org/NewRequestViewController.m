@@ -54,7 +54,7 @@
     __weak typeof(self) bruce = self;
     
     
-    NSString *token = self.organization.userToken;
+    NSString *token = [NSString stringWithFormat: @"Bearer %@", self.organization.userToken];
     
     [JSAPIPOSTRequest postProject:newProject withToken:token andCompletion:^(NSDictionary *project)  {
     __strong typeof(bruce) hulk = bruce;

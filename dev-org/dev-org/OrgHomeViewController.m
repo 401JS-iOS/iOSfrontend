@@ -46,11 +46,7 @@
     return self.allDevs.count;
 }
 - (IBAction)newRequestButtonPressed:(UIButton *)sender {
-    UIStoryboard *storyboard = self.storyboard;
-    NewRequestViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NewRequestViewController"];
-    NSLog(@"OrgHome token: %@",self.org.userToken);
-    vc.organization = self.org;
-    [self presentViewController:vc animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"createNewOpenRequest" sender:self];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -74,10 +70,16 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     [super prepareForSegue:segue sender:sender];
 
-    if ([[segue identifier]  isEqual: @"devProfileDetail"]) {
+    if ([[segue identifier] isEqual: @"devProfileDetail"]) {
         DevProfileViewController *destVC = segue.destinationViewController;
         int index = (int)self.devCollectionView.indexPathsForSelectedItems.firstObject.row;
         destVC.developer = [self.allDevs objectAtIndex:index];
+        destVC.organization = self.org;
+    }
+    
+    if ([[segue identifier] isEqual:@"createNewOpenRequest"]) {
+        NewRequestViewController *destVC = segue.destinationViewController;
+        destVC.organization = self.org;
     }
 
 }
