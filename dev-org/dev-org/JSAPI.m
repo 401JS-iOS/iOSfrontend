@@ -65,6 +65,7 @@
         
         for (NSDictionary *devDictionary in rootObject) {
             Developer *dev = [[Developer alloc] init];
+            dev.username = [devDictionary valueForKey:@"username"];
             dev.devID = [devDictionary valueForKey:@"_id"];
             dev.phone = [devDictionary valueForKey:@"phone"];
             dev.state = [devDictionary valueForKey:@"state"];

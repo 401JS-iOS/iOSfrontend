@@ -227,6 +227,7 @@
 //    newDev.languages = [NSArray arrayWithObjects: @"Objective-C", @"Esperanto", nil];
     newDev.services=[NSArray arrayWithObject:self.devServicesTextField.text];
     newDev.isAvailable=self.devIsAvailable.isOn;
+    newDev.username = self.user.username;
 //    newDev.radius=@"10 miles";
 
     self.user  = newDev;
