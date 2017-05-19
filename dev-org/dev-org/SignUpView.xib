@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="cityTextField" destination="NyK-TS-84i" id="2km-aX-86Q"/>
                 <outlet property="devIsAvailable" destination="Vk6-ev-lLL" id="1kH-nH-Oli"/>
                 <outlet property="devServicesTextField" destination="EHd-H0-Imy" id="nCH-r4-xSb"/>
                 <outlet property="devSubView" destination="Vud-Gt-yuR" id="Htc-xw-r5F"/>
@@ -20,8 +21,11 @@
                 <outlet property="orgNameTextField" destination="B4d-Q3-ghH" id="tMN-ev-nVk"/>
                 <outlet property="orgSubView" destination="HQA-n2-yAV" id="a0b-gn-dtT"/>
                 <outlet property="passwordTextField" destination="kUE-RO-5of" id="6va-6f-LMP"/>
+                <outlet property="phoneTextField" destination="j6r-4z-TkJ" id="hJL-ol-ksB"/>
+                <outlet property="stateTextField" destination="X9O-Q0-zP7" id="dEc-MU-vot"/>
                 <outlet property="userTypeControl" destination="aco-Ov-ydG" id="iho-6a-ptn"/>
                 <outlet property="usernameTextField" destination="eI5-3m-eYf" id="QwJ-0N-J2j"/>
+                <outlet property="websiteTextField" destination="sBz-IQ-toQ" id="UPQ-GW-knA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

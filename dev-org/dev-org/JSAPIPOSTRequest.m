@@ -145,7 +145,7 @@
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
-    NSDictionary *devDictionary = @{@"city": user.city, @"state": user.state, @"phone": user.phone, @"profilePic": user.profilePic, @"websites": user.websites, @"languages":user.languages, @"services":user.services};
+    NSDictionary *devDictionary = @{@"city": user.city, @"state": user.state, @"phone": user.phone, @"websites": user.websites, @"services":user.services};
 
 
     NSError *error = nil;
