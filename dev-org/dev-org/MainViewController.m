@@ -14,6 +14,7 @@
 @interface MainViewController ()
 
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) UIView *defaultView;
 
 @property (weak, nonatomic) IBOutlet UITextField *loginUsername;
 @property (weak, nonatomic) IBOutlet UITextField *loginPassword;
@@ -21,9 +22,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UISwitch *developerSwitch;
 
-@property (strong, nonatomic) UIView *defaultView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *userTypeControl;
+
+@property (weak, nonatomic) IBOutlet UIView *devSubView;
+@property (weak, nonatomic) IBOutlet UIView *orgSubView;
+
+
 
 
 @end
@@ -110,16 +115,43 @@
     UIView *signUpView = [[[NSBundle mainBundle] loadNibNamed:@"SignUpView" owner:self options:nil] objectAtIndex:0];
     
     self.defaultView = self.view;
+    [self.navigationController setNavigationBarHidden:YES];
     self.view = signUpView;
+    [self.userTypeControl setSelectedSegmentIndex: UISegmentedControlNoSegment];
+    [self.userTypeControl addTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+    
+}
+
+- (void)userTypeChanged {
+    if (self.userTypeControl.selectedSegmentIndex == 0) {
+        [self.devSubView setHidden:NO];
+        [self.orgSubView setHidden:YES];
+    } else {
+        [self.devSubView setHidden:YES];
+        [self.orgSubView setHidden:NO];
+    }
 }
 
 - (IBAction)createAccountPressed:(UIButton *)sender {
-    [self userSignUpWithEmail:self.emailTextField.text username:self.usernameTextField.text password:self.passwordTextField.text isDev:self.developerSwitch.isOn];
+    
+    Boolean isDev;
+    if (self.userTypeControl.selectedSegmentIndex == 0) {
+        isDev = YES;
+    } else {
+        isDev = NO;
+    }
+    NSLog(@"Developer: %hhu", isDev);
+    [self userSignUpWithEmail:self.emailTextField.text username:self.usernameTextField.text password:self.passwordTextField.text isDev:isDev];
+    
+    [self.userTypeControl removeTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
     self.view = self.defaultView;
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (IBAction)cancelSignUpPressed:(UIButton *)sender {
+    [self.userTypeControl removeTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
     self.view = self.defaultView;
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 
