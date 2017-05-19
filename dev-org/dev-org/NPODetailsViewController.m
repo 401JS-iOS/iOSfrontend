@@ -26,7 +26,7 @@
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
     
     self.NPOName.text = self.organization.org;
-    self.NPOImage.image = [UIImage imageWithData:imageData];
+//    self.NPOImage.image = [UIImage imageWithData:imageData];
     self.NPOCityLabel.text = self.organization.city;
     self.NPOStateLabel.text = self.organization.state;
     self.NPOEmailLabel.text = self.organization.email;
