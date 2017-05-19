@@ -10,10 +10,11 @@
 #import "Developer.h"
 #import "Organization.h"
 #import "JSAPIPOSTRequest.h"
-
+#import "OrgHomeViewController.h"
 @interface MainViewController ()
 
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) Organization *org;
 @property (strong, nonatomic) UIView *defaultView;
 
 @property (weak, nonatomic) IBOutlet UITextField *loginUsername;
@@ -47,17 +48,12 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)checkUserStatus {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     NSData *data = [userDefaults objectForKey:@"user"];
     self.user = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-  
+    NSLog(@"disk user token: %@", self.user.userToken);
     if (!self.user) {
         NSLog(@"No user found!");
     } else {
@@ -68,15 +64,28 @@
         
         if (self.user.isDev) {
             NSLog(@"I'm a developer!");
-            Developer *nowDev = (Developer *)self.user;
-            [self performSegueWithIdentifier:@"showDevStoryboard" sender:self];
+//            Developer *nowDev = (Developer *)self.user;
+            [self performSegueWithIdentifier:@"showDevStoryboard" sender:nil];
         } else {
             NSLog(@"I'm an organization!");
-            Organization *nowOrg = (Organization *)self.user;
-            [self performSegueWithIdentifier:@"showOrgStoryboard" sender:self];
+            self.org = (Organization *)self.user;
+            [self performSegueWithIdentifier:@"showOrgStoryboard" sender:nil];
         }
     }
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    if ([segue.identifier isEqualToString:@"showOrgStoryboard"]) {
+        OrgHomeViewController *orgVC = segue.destinationViewController.childViewControllers[0];
+        NSLog(@"OrgHome token: %@",self.org.userToken);
+        NSLog(@"OrgHome orgID: %@",self.org.orgID);
+
+        orgVC.org = self.org;
+    } else {
+        
+    }
 }
 
 - (IBAction)loginPressed:(UIButton *)sender {
@@ -99,11 +108,11 @@
 -(void)userSignUpWithEmail:(NSString*)email username:(NSString*)username password:(NSString*)password isDev:(Boolean)isDev {
     
     User *newUser = [[User alloc] init];
-        newUser.username = username;
-        newUser.email = email;
-        newUser.password = password;
-        newUser.isDev = isDev;
-        self.user = newUser;
+    newUser.username = username;
+    newUser.email = email;
+    newUser.password = password;
+    newUser.isDev = isDev;
+    self.user = newUser;
     
     __weak typeof(self) bruce = self;
     [JSAPIPOSTRequest postUser:self.user withCompletion:^(NSString *identifier) {
@@ -151,7 +160,7 @@
 
 - (IBAction)createAccountPressed:(UIButton *)sender {
     
-    Boolean isDev;
+    BOOL isDev;
     if (self.userTypeControl.selectedSegmentIndex == 0) {
         isDev = YES;
     } else {
@@ -213,41 +222,34 @@
 
 -(void)createOrganization{
 
-    Organization *newOrg = [[Organization alloc ]init];
-    
-    newOrg.userToken = self.user.userToken;
-    newOrg.isDev = NO;
-    newOrg.city = self.cityTextField.text;
-    newOrg.state = self.stateTextField.text;
-    newOrg.phone = self.phoneTextField.text;
+    self.org = [[Organization alloc] init];
+    self.org.userToken = self.user.userToken;
+    self.org.isDev = NO;
+    self.org.city = self.cityTextField.text;
+    self.org.state = self.stateTextField.text;
+    self.org.phone = self.phoneTextField.text;
 //    newOrg.profilePic = @"image.jpg";
-    newOrg.websites = [NSArray arrayWithObject:self.websiteTextField.text];
-    newOrg.org = self.orgNameTextField.text;
-    newOrg.orgDesc = self.orgDescriptionTextView.text;
+    self.org.websites = [NSArray arrayWithObject:self.websiteTextField.text];
+    self.org.org = self.orgNameTextField.text;
+    self.org.orgDesc = self.orgDescriptionTextView.text;
     
-    self.user = newOrg;
+    self.user = self.org;
 
-    __weak typeof(self) bruce = self;
-    [JSAPIPOSTRequest postNPO:newOrg withCompletion:^(NSDictionary *orgDictionary) {
-        __strong typeof(bruce) hulk = bruce;
-        
-        NSString *userID = [orgDictionary valueForKey:@"userID"];
-        [hulk.user setValue:userID forKey:@"userID"];
-        
-        NSString *orgID = [orgDictionary valueForKey:@"_id"];
-        [hulk.user setValue:orgID forKey:@"orgID"];
-        
-        NSString *username = [orgDictionary valueForKey:@"username"];
-        [hulk.user setValue:username forKey:@"username"];
-        
-        NSString *email = [orgDictionary valueForKey:@"email"];
-        [hulk.user setValue:email forKey:@"email"];
-        
-        [hulk saveUser];
-        [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
-        hulk.view = hulk.defaultView;
-        [hulk.navigationController setNavigationBarHidden:NO];
-        [hulk checkUserStatus];
+//    __weak typeof(self) bruce = self;
+    [JSAPIPOSTRequest postNPO:self.org withCompletion:^(NSDictionary *orgDictionary) {
+//        __strong typeof(bruce) hulk = bruce;
+        NSLog(@"dict: %@",orgDictionary);
+        self.user.userID = orgDictionary[@"userID"];
+        self.org.orgID = orgDictionary[@"_id"];
+        self.user.username = orgDictionary[@"username"];
+        self.user.email = orgDictionary[@"email"];
+        [self saveUser];
+        [self.navigationController setNavigationBarHidden:NO];
+        [self checkUserStatus];
+//        [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+//        hulk.view = hulk.defaultView;
+//        [hulk.navigationController setNavigationBarHidden:NO];
+//        [hulk checkUserStatus];
     }];
 
 }

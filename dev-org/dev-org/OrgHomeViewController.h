@@ -11,9 +11,10 @@
 #import "DevCell.h"
 #import "Developer.h"
 #import "DevProfileViewController.h"
+#import "Organization.h"
 
 @interface OrgHomeViewController : UIViewController
 
-
+@property (strong, nonatomic) Organization *org;
 @end
 

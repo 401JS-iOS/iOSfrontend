@@ -16,6 +16,7 @@
 
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:_userToken forKey:@"userToken"];
     [coder encodeBool:_isDev forKey:@"isDev"];
     [coder encodeObject:_userID forKey:@"userID"];
     [coder encodeObject:_username forKey:@"username"];
@@ -33,7 +34,7 @@
     if (!self) {
         return nil;
     }
-    
+    _userToken = [decoder decodeObjectForKey:@"userToken"];
     _isDev = [decoder decodeBoolForKey:@"isDev"];
     _userID = [decoder decodeObjectForKey:@"userID"];
     _username = [decoder decodeObjectForKey:@"username"];

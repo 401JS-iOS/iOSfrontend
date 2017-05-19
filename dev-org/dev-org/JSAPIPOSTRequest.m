@@ -122,10 +122,7 @@
             if (error) {
                 NSLog(@"Error: %@", error.localizedDescription);
             }
-            
-            NSString *stringForm = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-            NSLog(@"String: %@", stringForm);
-            
+            NSLog(@"response: %@", response);
             NSDictionary *orgObject = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:kNilOptions
                                                                         error:nil];

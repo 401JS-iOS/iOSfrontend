@@ -267,8 +267,8 @@
                     <connections>
                         <outlet property="NPOCityLabel" destination="JCs-6D-AQ2" id="lei-IH-RhZ"/>
                         <outlet property="NPOEmailLabel" destination="vxS-CZ-FQe" id="VH1-3y-EaS"/>
-                        <outlet property="NPOImage" destination="pGE-zK-R0U" id="KWC-57-zqT"/>
-                        <outlet property="NPONameLabel" destination="tmi-w6-wIr" id="9VB-85-Cch"/>
+                        <outlet property="NPOImage" destination="pGE-zK-R0U" id="mW8-6C-CxU"/>
+                        <outlet property="NPOName" destination="Ng1-DU-U7o" id="Nxl-42-p4T"/>
                         <outlet property="NPOPhoneLabel" destination="QUC-yc-WbV" id="co6-3x-mcJ"/>
                         <outlet property="NPOStateLabel" destination="Bcc-9F-nhw" id="Uxi-bp-PzD"/>
                     </connections>

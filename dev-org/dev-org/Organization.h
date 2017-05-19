@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSString* orgID;
 @property (strong, nonatomic) NSString* org;
-@property (strong, nonatomic) NSArray* projects;
+@property (strong, nonatomic) NSMutableArray* projects;
 @property (strong, nonatomic) NSString* orgDesc;
 
 @end
