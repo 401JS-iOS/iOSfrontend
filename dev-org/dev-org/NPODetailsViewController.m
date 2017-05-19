@@ -22,6 +22,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)swippedDown:(UISwipeGestureRecognizer *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

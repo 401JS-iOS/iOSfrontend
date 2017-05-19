@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Organization.h"
 
 @interface NPORequestsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *orgImage;
@@ -14,6 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *orgNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-
+@property (strong, nonatomic) Organization *organization;
 
 @end

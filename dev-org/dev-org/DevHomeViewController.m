@@ -57,6 +57,7 @@
     __weak typeof(self) bruce = self;
     [JSAPI fetchProjects:^(NSArray<Project *> *projects) {
         __strong typeof(bruce) hulk = bruce;
+    
         hulk.allProjects = projects;
         NSLog(@"Projects: %@", self.allProjects);
         [hulk.orgTableView reloadData];
@@ -65,7 +66,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.allOrgs.count;
+    return self.allProjects.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -73,19 +74,16 @@
     NSString *identifier = @"NPORequestsTableViewCell";
     [self.orgTableView registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellReuseIdentifier:identifier];
     NPORequestsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
-    Organization *currentCell = self.allOrgs[indexPath.row];
-    NSString *ImageURL = currentCell.profilePic;
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
- 
-    
+
     Project *projectDataCell = self.allProjects[indexPath.row];
-    //matche orgs id to org name and project
-    for (Organization *org in self.allOrgs) {
-        if (org.orgID == projectDataCell.orgID) {
-            cell.orgNameLabel.text = currentCell.org;
+   
+    for (Organization *currentOrg in self.allOrgs) {
+        if ([currentOrg.orgID isEqualToString: projectDataCell.orgID]) {
+            cell.organization = currentOrg;
+            NSString *ImageURL = currentOrg.profilePic;
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
             cell.orgImage.image = [UIImage imageWithData:imageData];
-            // org matches
+            cell.orgNameLabel.text = currentOrg.org;
         }
         
     }
@@ -101,12 +99,11 @@
     if ([[segue identifier]  isEqual: segueID]){
         ProjectViewController *destVC = segue.destinationViewController;
         NSIndexPath *indexPath = [self.orgTableView indexPathForSelectedRow];
-        destVC.organization = [self.allOrgs objectAtIndex:indexPath.row];
+        NPORequestsTableViewCell *selectedCell = [self.orgTableView cellForRowAtIndexPath:indexPath];
+        
+        
         destVC.project = [self.allProjects objectAtIndex:indexPath.row];
-//        if (destVC.organization.orgID == destVC.project.orgID) {
-        
-//        }
-        
+        destVC.organization = selectedCell.organization;
 
     }
 }

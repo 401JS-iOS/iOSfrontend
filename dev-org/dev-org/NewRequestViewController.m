@@ -8,8 +8,10 @@
 
 #import "NewRequestViewController.h"
 #import "Project.h"
-
+#import "JSAPI.h"
+#import "JSAPIPOSTRequest.h"
 @interface NewRequestViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@property (strong, nonatomic) Project *project;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *projectTypePicker;
 @property (weak, nonatomic) IBOutlet UITextView *projectDescription;
@@ -33,16 +35,43 @@
 }
 
 - (IBAction)submitPressed:(UIButton *)sender {
+    
+  
     Project *newProject = [[Project alloc] init];
     newProject.service = self.projectTypes[[self.projectTypePicker selectedRowInComponent:0]];
     newProject.projectDescription = self.projectDescription.text;
-//    if (self.developer) {
-//       newProject.devs = [[NSArray alloc] initWithObjects:self.developer, nil];
-//    }
-//    NSLog(@"Project type: %@", newProject.service);
-//    NSLog(@"Project description: %@", newProject.projectDescription);
-//    NSLog(@"Project developers: %@", newProject.devs);
+    newProject.orgID = self.organization.orgID;
+    self.project = newProject;
     
+    if (self.developer) {
+        newProject.dev = [NSString stringWithFormat:@"%@", self.developer.devID];
+    }
+    NSLog(@"Project type: %@", newProject.service);
+    NSLog(@"Project description: %@", newProject.projectDescription);
+    __weak typeof(self) bruce = self;
+    
+    
+    NSString *token = self.organization.userToken;
+    
+    [JSAPIPOSTRequest postProject:newProject withToken:token andCompletion:^(NSDictionary *project)  {
+    __strong typeof(bruce) hulk = bruce;
+        
+//        NSString *userID = [orgDictionary valueForKey:@"userID"];
+//        [hulk.user setValue:userID forKey:@"userID"];
+//        
+//        NSString *orgID = [orgDictionary valueForKey:@"_id"];
+//        [hulk.user setValue:orgID forKey:@"orgID"];
+//        
+//        NSString *username = [newOrg valueForKey:@"username"];
+//        [hulk.user setValue:username forKey:@"username"];
+//        
+//        NSString *email = [newOrg valueForKey:@"email"];
+//        [hulk.user setValue:email forKey:@"email"];
+//        
+        
+    }];
+
+///////////////////////////////
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

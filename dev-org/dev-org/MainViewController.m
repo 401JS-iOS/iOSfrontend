@@ -201,6 +201,7 @@
         NSString *email = [devDictionary valueForKey:@"email"];
         [hulk.user setValue:email forKey:@"email"];
         
+        
         [hulk saveUser];
         [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
         hulk.view = hulk.defaultView;
