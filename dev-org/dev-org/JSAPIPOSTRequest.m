@@ -146,7 +146,27 @@
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
-    NSDictionary *devDictionary = @{@"city": user.city, @"state": user.state, @"phone": user.phone, @"websites": user.websites, @"services":user.services};
+    
+    int randomNumber = (int)arc4random_uniform(3);
+    NSString *firstLanguage = [[NSString alloc] init];
+    switch (randomNumber) {
+        case 0:
+            firstLanguage = @"HTML";
+            break;
+        case 1:
+            firstLanguage = @"JavaScript";
+            break;
+        case 2:
+            firstLanguage = @"Objective-C";
+            break;
+        default:
+            firstLanguage = @"Swift 3.0";
+            break;
+    }
+    
+    NSArray *languages = [NSArray arrayWithObjects:firstLanguage, nil];
+    
+    NSDictionary *devDictionary = @{@"city": user.city, @"state": user.state, @"phone": user.phone, @"websites": user.websites, @"services":user.services, @"languages": languages};
 
 
     NSError *error = nil;
