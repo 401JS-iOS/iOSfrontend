@@ -17,7 +17,10 @@
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
-    NSDictionary *projectDictionary = @{@"npoId": project.orgID, @"dev":project.dev, @"projectDescription": project.projectDescription, @"service": project.service};
+    if (!project.dev) {
+        project.dev = @"";
+    }
+    NSDictionary *projectDictionary = @{@"dev":project.dev, @"desc": project.projectDescription, @"service": project.service};
     
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:projectDictionary
@@ -41,14 +44,14 @@
                 NSLog(@"Error: %@", error.localizedDescription);
             }
             
-            NSDictionary *NPOObject = [NSJSONSerialization JSONObjectWithData:data
+            NSDictionary *projectObject = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:NSJSONReadingMutableContainers
                                                                         error:nil];
             
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"Token:%@", NPOObject);
-                    completion(NPOObject);
+                    NSLog(@"Project:%@", projectObject);
+                    completion(projectObject);
                 });
             }
         }] resume];
