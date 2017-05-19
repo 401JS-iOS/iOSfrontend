@@ -83,6 +83,8 @@
             NSString *ImageURL = currentOrg.profilePic;
             NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
             cell.orgImage.image = [UIImage imageWithData:imageData];
+            
+            
             cell.orgNameLabel.text = currentOrg.org;
         }
         

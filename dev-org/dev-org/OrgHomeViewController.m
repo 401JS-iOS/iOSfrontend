@@ -59,11 +59,26 @@
 
     NSString *singleService = [currentCell.services objectAtIndex:0];
     //to convert image url to rendableUIImage
-    NSString *ImageURL = @"currentCell.profilePic";
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
-
+    
+    
+    int randomNumber = (int)arc4random_uniform(3);
+    NSString *randomDev = [[NSString alloc] init];
+    switch (randomNumber) {
+        case 0:
+            randomDev = @"dev1";
+            break;
+        case 1:
+            randomDev = @"dev2";
+            break;
+        case 2:
+            randomDev = @"dev3";
+            break;
+    }
+    //    NSString *ImageURL = @"currentCell.profilePic";
+//    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+    //        cell.devProfileImage.image = [UIImage imageWithData:imageData];
     cell.devProjectTypeLabel.text = singleService;
-    cell.devProfileImage.image = [UIImage imageWithData:imageData];
+    cell.devProfileImage.image = [UIImage imageNamed:randomDev];
     return cell;
 }
 
