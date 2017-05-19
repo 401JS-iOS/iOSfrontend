@@ -20,6 +20,7 @@
     [coder encodeObject:_orgID forKey:@"orgID"];
     [coder encodeObject:_org forKey:@"org"];
     [coder encodeObject:_projects forKey:@"projects"];
+    [coder encodeObject:_orgDesc forKey:@"orgDesc"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder {
@@ -31,6 +32,7 @@
     _orgID = [decoder decodeObjectForKey:@"orgID"];
     _org = [decoder decodeObjectForKey:@"org"];
     _projects = [decoder decodeObjectForKey:@"projects"];
+    _orgDesc = [decoder decodeObjectForKey:@"orgDesc"];
     
     return self;
 }

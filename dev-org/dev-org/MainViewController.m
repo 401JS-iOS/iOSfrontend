@@ -218,13 +218,13 @@
     
     newOrg.userToken = self.user.userToken;
     newOrg.isDev = NO;
-//    newOrg.address = @"2512 S 12th St";
-    newOrg.city = @"Seattle";
-    newOrg.state = @"WA";
-    newOrg.phone = @"206-555-1212";
-    newOrg.profilePic = @"image.jpg";
-    newOrg.websites = @[@"github.com", @"devsite.com"];
-    newOrg.org = @"We are a legitimate charity.";
+    newOrg.city = self.cityTextField.text;
+    newOrg.state = self.stateTextField.text;
+    newOrg.phone = self.phoneTextField.text;
+//    newOrg.profilePic = @"image.jpg";
+    newOrg.websites = [NSArray arrayWithObject:self.websiteTextField.text];
+    newOrg.org = self.orgNameTextField.text;
+    newOrg.orgDesc = self.orgDescriptionTextView.text;
     
     self.user = newOrg;
 
@@ -238,13 +238,16 @@
         NSString *orgID = [orgDictionary valueForKey:@"_id"];
         [hulk.user setValue:orgID forKey:@"orgID"];
         
-        NSString *username = [newOrg valueForKey:@"username"];
+        NSString *username = [orgDictionary valueForKey:@"username"];
         [hulk.user setValue:username forKey:@"username"];
         
-        NSString *email = [newOrg valueForKey:@"email"];
+        NSString *email = [orgDictionary valueForKey:@"email"];
         [hulk.user setValue:email forKey:@"email"];
         
         [hulk saveUser];
+        [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+        hulk.view = hulk.defaultView;
+        [hulk.navigationController setNavigationBarHidden:NO];
     }];
 
 }

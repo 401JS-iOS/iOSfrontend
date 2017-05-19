@@ -101,7 +101,7 @@
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
 
-    NSDictionary *NPODictionary = @{@"org": user.org, @"city": user.city, @"state": user.state, @"phone": user.state, @"profilePic": user.profilePic, @"websites": user.websites};
+    NSDictionary *NPODictionary = @{@"org": user.org, @"city": user.city, @"state": user.state, @"phone": user.phone, @"websites": user.websites, @"orgDesc": user.orgDesc};
     
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:NPODictionary
