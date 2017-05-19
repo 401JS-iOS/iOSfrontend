@@ -10,6 +10,7 @@
 #import "Developer.h"
 #import "Organization.h"
 #import "JSAPIPOSTRequest.h"
+#import "JSAPI.h"
 
 @interface MainViewController ()
 
@@ -80,7 +81,17 @@
 }
 
 - (IBAction)loginPressed:(UIButton *)sender {
+    self.user = [[User alloc] init];
+    __weak typeof(self) bruce = self;
     
+    [JSAPI signInWithUsername:(NSString*)self.loginUsername.text password:(NSString*)self.loginPassword.text andCompletion:^(NSString *identifier) {
+        __strong typeof(bruce) hulk = bruce;
+        
+        // Remove quotation marks from string before assigning to user
+        hulk.user.userToken = [identifier componentsSeparatedByString:@"\""][1];
+        NSLog(@"testing login");
+        [hulk saveUser];
+    }];
 }
 
 
