@@ -80,9 +80,9 @@
     for (Organization *currentOrg in self.allOrgs) {
         if ([currentOrg.orgID isEqualToString: projectDataCell.orgID]) {
             cell.organization = currentOrg;
-            NSString *ImageURL = currentOrg.profilePic;
-            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
-            cell.orgImage.image = [UIImage imageWithData:imageData];
+//            NSString *ImageURL = currentOrg.profilePic;
+//            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+//            cell.orgImage.image = [UIImage imageWithData:imageData];
             
             
             cell.orgNameLabel.text = currentOrg.org;

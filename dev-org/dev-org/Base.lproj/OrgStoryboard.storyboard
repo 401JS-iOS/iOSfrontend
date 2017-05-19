@@ -38,13 +38,13 @@
                                         <rect key="frame" x="7.5" y="0.0" width="343" height="242"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="344" height="242"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="242"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="website" translatesAutoresizingMaskIntoConstraints="NO" id="y2W-VI-Zr7">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="website" translatesAutoresizingMaskIntoConstraints="NO" id="y2W-VI-Zr7">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="242"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbK-ds-3My">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbK-ds-3My">
                                                     <rect key="frame" x="18" y="173" width="307" height="31"/>
                                                     <color key="backgroundColor" red="0.98161881350000002" green="0.98161881350000002" blue="0.98161881350000002" alpha="0.3985177654109589" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -69,7 +69,11 @@
                                             <constraint firstItem="y2W-VI-Zr7" firstAttribute="top" secondItem="S0A-Wq-Xbo" secondAttribute="top" id="R4E-sG-ytx"/>
                                             <constraint firstItem="t6i-Sf-RBC" firstAttribute="width" secondItem="DbK-ds-3My" secondAttribute="width" id="TBZ-lX-b9j"/>
                                             <constraint firstAttribute="bottom" secondItem="y2W-VI-Zr7" secondAttribute="bottom" id="aac-8G-Iuo"/>
+                                            <constraint firstItem="y2W-VI-Zr7" firstAttribute="top" secondItem="S0A-Wq-Xbo" secondAttribute="top" id="bkt-Pa-O1m"/>
+                                            <constraint firstAttribute="trailing" secondItem="y2W-VI-Zr7" secondAttribute="trailing" id="e1H-gg-RrX"/>
                                             <constraint firstItem="y2W-VI-Zr7" firstAttribute="leading" secondItem="S0A-Wq-Xbo" secondAttribute="leading" id="elA-zq-dDe"/>
+                                            <constraint firstItem="y2W-VI-Zr7" firstAttribute="leading" secondItem="S0A-Wq-Xbo" secondAttribute="leading" id="jem-r1-FsY"/>
+                                            <constraint firstAttribute="bottom" secondItem="y2W-VI-Zr7" secondAttribute="bottom" id="mmm-Zp-dkY"/>
                                             <constraint firstItem="t6i-Sf-RBC" firstAttribute="leading" secondItem="DbK-ds-3My" secondAttribute="leading" id="teV-a7-Da3"/>
                                             <constraint firstAttribute="trailing" secondItem="y2W-VI-Zr7" secondAttribute="trailing" id="uDA-GU-Vys"/>
                                         </constraints>
@@ -438,6 +442,6 @@
         <image name="website" width="216" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DDv-Te-XdW"/>
+        <segue reference="yoZ-bX-czr"/>
     </inferredMetricsTieBreakers>
 </document>

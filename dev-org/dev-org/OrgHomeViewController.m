@@ -19,9 +19,7 @@
 @implementation OrgHomeViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"White_background"]];
+    [super viewDidLoad]; 
 
     self.devCollectionView.dataSource = self;
 
