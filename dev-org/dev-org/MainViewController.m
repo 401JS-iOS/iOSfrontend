@@ -78,6 +78,12 @@
     }
     
 }
+
+- (IBAction)loginPressed:(UIButton *)sender {
+    
+}
+
+
 - (IBAction)resetUser:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -161,11 +167,6 @@
     [self.navigationController setNavigationBarHidden:NO];
 }
 
-
-- (IBAction)createDev:(UIButton *)sender {
-//    [self userSignUp];
-}
-
 -(void)createDeveloper{
     [self saveUser];
     
@@ -204,12 +205,9 @@
         [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
         hulk.view = hulk.defaultView;
         [hulk.navigationController setNavigationBarHidden:NO];
+        [hulk checkUserStatus];
     }];
     
-}
-
-- (IBAction)createOrg:(UIButton *)sender {
-//    [self userSignUp];
 }
 
 -(void)createOrganization{
@@ -248,6 +246,7 @@
         [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
         hulk.view = hulk.defaultView;
         [hulk.navigationController setNavigationBarHidden:NO];
+        [hulk checkUserStatus];
     }];
 
 }
