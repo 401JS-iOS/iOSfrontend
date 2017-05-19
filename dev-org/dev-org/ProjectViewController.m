@@ -12,7 +12,10 @@
 
 
 @interface ProjectViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *orgNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *orgImage;
+@property (weak, nonatomic) IBOutlet UILabel *projectDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serviceTypeLabel;
 @property (strong, nonatomic) Project *currProject;
 
 @end
@@ -21,10 +24,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [JSAPI fetchProject:^(Project *project) {
-        self.currProject = project;
-        NSLog(@"Projects: %@", self.currProject);
-    }];
+    
+    NSString *ImageURL = self.organization.profilePic;
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+    
+    self.orgNameLabel.text = self.organization.org;
+    self.orgImage.image = [UIImage imageWithData:imageData];
+    self.serviceTypeLabel.text = self.project.service;
+    self.projectDescriptionLabel.text = self.project.projectDescription;
+}
+- (IBAction)swipeGesture:(UISwipeGestureRecognizer *)sender {
+    
+    UIStoryboard *storyboard = self.storyboard;
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NPODetailsViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+
 }
 
 - (IBAction)applybuttonPressed:(UIButton *)sender {
@@ -44,5 +58,10 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)slideToLeftWithGestureRecognizer:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NPODetailsViewController" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NPODetailsViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 @end

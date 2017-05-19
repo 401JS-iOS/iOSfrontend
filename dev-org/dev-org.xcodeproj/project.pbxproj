@@ -14,6 +14,7 @@
 		2806DB4D1ECB9B2700126188 /* DevProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2806DB4C1ECB9B2700126188 /* DevProfileViewController.m */; };
 		286DD9581ECBFA4200A03917 /* DevHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286DD9571ECBFA4200A03917 /* DevHomeViewController.m */; };
 		286DD95A1ECC0CC800A03917 /* DevStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286DD9591ECC0CC800A03917 /* DevStoryboard.storyboard */; };
+		28ACC81C1ECE802D00433691 /* NPODetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACC81B1ECE802D00433691 /* NPODetailsViewController.m */; };
 		28F1F51F1ECCDC7300D6D1AB /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F1F51E1ECCDC7300D6D1AB /* ProjectViewController.m */; };
 		28F1F5221ECD023B00D6D1AB /* JSAPIPOSTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F1F5211ECD023B00D6D1AB /* JSAPIPOSTRequest.m */; };
 		624F8D581ECA48C6000C20FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D571ECA48C6000C20FA /* main.m */; };
@@ -30,6 +31,7 @@
 		624F8D831ECBE5CA000C20FA /* NewRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D821ECBE5CA000C20FA /* NewRequestViewController.m */; };
 		624F8D851ECCA304000C20FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624F8D841ECCA304000C20FA /* Main.storyboard */; };
 		624F8D881ECCD077000C20FA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624F8D871ECCD077000C20FA /* MainViewController.m */; };
+		62C395B51ECDFF9300252344 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C395B41ECDFF9300252344 /* SignUpView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		286DD9561ECBFA4200A03917 /* DevHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevHomeViewController.h; sourceTree = "<group>"; };
 		286DD9571ECBFA4200A03917 /* DevHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevHomeViewController.m; sourceTree = "<group>"; };
 		286DD9591ECC0CC800A03917 /* DevStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DevStoryboard.storyboard; sourceTree = "<group>"; };
+		28ACC81A1ECE802D00433691 /* NPODetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPODetailsViewController.h; sourceTree = "<group>"; };
+		28ACC81B1ECE802D00433691 /* NPODetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPODetailsViewController.m; sourceTree = "<group>"; };
 		28F1F51D1ECCDC7300D6D1AB /* ProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectViewController.h; sourceTree = "<group>"; };
 		28F1F51E1ECCDC7300D6D1AB /* ProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectViewController.m; sourceTree = "<group>"; };
 		28F1F5201ECD023B00D6D1AB /* JSAPIPOSTRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSAPIPOSTRequest.h; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 		624F8D841ECCA304000C20FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		624F8D861ECCD077000C20FA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		624F8D871ECCD077000C20FA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		62C395B41ECDFF9300252344 /* SignUpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +138,8 @@
 		624F8D6D1ECA4950000C20FA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				28ACC81A1ECE802D00433691 /* NPODetailsViewController.h */,
+				28ACC81B1ECE802D00433691 /* NPODetailsViewController.m */,
 				624F8D861ECCD077000C20FA /* MainViewController.h */,
 				624F8D871ECCD077000C20FA /* MainViewController.m */,
 				28F1F51D1ECCDC7300D6D1AB /* ProjectViewController.h */,
@@ -155,6 +162,7 @@
 				286DD9591ECC0CC800A03917 /* DevStoryboard.storyboard */,
 				624F8D5F1ECA48C6000C20FA /* OrgStoryboard.storyboard */,
 				624F8D841ECCA304000C20FA /* Main.storyboard */,
+				62C395B41ECDFF9300252344 /* SignUpView.xib */,
 				2806DB3E1ECA61B300126188 /* NPORequestsTableViewCell.h */,
 				2806DB3F1ECA61B300126188 /* NPORequestsTableViewCell.m */,
 				2806DB481ECB80CC00126188 /* DevCell.h */,
@@ -241,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C395B51ECDFF9300252344 /* SignUpView.xib in Resources */,
 				2806DB421ECA61B300126188 /* NPORequestsTableViewCell.xib in Resources */,
 				624F8D661ECA48C6000C20FA /* LaunchScreen.storyboard in Resources */,
 				624F8D631ECA48C6000C20FA /* Assets.xcassets in Resources */,
@@ -260,6 +269,7 @@
 				624F8D7A1ECA660D000C20FA /* Organization.m in Sources */,
 				2806DB471ECAB91000126188 /* JSAPI.m in Sources */,
 				2806DB4D1ECB9B2700126188 /* DevProfileViewController.m in Sources */,
+				28ACC81C1ECE802D00433691 /* NPODetailsViewController.m in Sources */,
 				28F1F5221ECD023B00D6D1AB /* JSAPIPOSTRequest.m in Sources */,
 				624F8D731ECA6403000C20FA /* User.m in Sources */,
 				28F1F51F1ECCDC7300D6D1AB /* ProjectViewController.m in Sources */,

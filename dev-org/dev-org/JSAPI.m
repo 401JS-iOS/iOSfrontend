@@ -48,7 +48,7 @@
 
 +(void)fetchAllOrganizations:(NPOCompletion)completion{
     
-    NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/npos"];
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/npolist"];
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
@@ -68,7 +68,31 @@
                 
                 for (NSDictionary *orgDictionary in rootObject) {
                     Organization *org = [[Organization alloc] init];
-                    [org setValuesForKeysWithDictionary:orgDictionary];
+                    
+                    NSString *orgID = [orgDictionary valueForKey:@"_id"];
+                    [org setValue:orgID forKey:@"orgID"];
+                    
+                    NSString *city = [orgDictionary valueForKey:@"city"];
+                    [org setValue:city forKey:@"city"];
+                    
+                    NSString *orgName = [orgDictionary valueForKey:@"org"];
+                    [org setValue:orgName forKey:@"org"];
+                    
+                    NSString *profilePic = [orgDictionary valueForKey:@"profilePic"];
+                    [org setValue:profilePic forKey:@"profilePic"];
+                    
+                    NSString *projects = [orgDictionary valueForKey:@"projects"];
+                    [org setValue:projects forKey:@"projects"];
+                    
+                    NSString *state = [orgDictionary valueForKey:@"state"];
+                    [org setValue:state forKey:@"state"];
+                    
+                    NSString *userID = [orgDictionary valueForKey:@"userID"];
+                    [org setValue:userID forKey:@"userID"];
+                    
+                    NSString *websites = [orgDictionary valueForKey:@"websites"];
+                    [org setValue:websites forKey:@"websites"];
+
                     [allOrgs addObject:org];
                 }
                 
@@ -80,8 +104,8 @@
             }] resume];
 }
 
-+(void)fetchProject:(ProjectCompletion)completion {
-    NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/project"];
++(void)fetchProjects:(ProjectCompletion)completion {
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/projectlist"];
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
@@ -95,12 +119,38 @@
                                                                            options:NSJSONReadingMutableContainers
                                                                              error:nil];
                 NSLog(@"Project ROOT: %@", rootObject);
-                Project *project = [[Project alloc] init];
-                [project setValuesForKeysWithDictionary:rootObject];
+                
+                NSMutableArray *allProjects = [[NSMutableArray alloc]init];
+                
+                for (NSDictionary *projectsDictionary in rootObject) {
+                    Project *project = [[Project alloc] init];
+                    
+                    NSString *projectID = [projectsDictionary valueForKey:@"_id"];
+                    [project setValue:projectID forKey:@"projectID"];
+                    
+                    NSString *projectDescription = [projectsDictionary valueForKey:@"desc"];
+                    [project setValue:projectDescription forKey:@"projectDescription"];
+                    
+                    NSString *npoID = [projectsDictionary valueForKey:@"npoID"];
+                    [project setValue:npoID forKey:@"orgID"];
+                    
+                    NSString *projectStatus = [projectsDictionary valueForKey:@"projStatus"];
+                    [project setValue:projectStatus forKey:@"projStatus"];
+                    
+                    NSString *reviews = [projectsDictionary valueForKey:@"reviews"];
+                    [project setValue:reviews forKey:@"reviews"];
+                    
+                    NSString *service = [projectsDictionary valueForKey:@"service"];
+                    [project setValue:service forKey:@"service"];
+                    
+                    NSString *userID = [projectsDictionary valueForKey:@"userID"];
+                    [project setValue:userID forKey:@"userID"];
+                    [allProjects addObject:project];
+                }
                 
                 if (completion) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        completion(project);
+                        completion([allProjects copy]);
                     });
                 }
             }] resume];

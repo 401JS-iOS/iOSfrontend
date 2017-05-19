@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Organization.h"
+#import "Project.h"
 
 @interface ProjectViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *orgNameLabel;
+
 
 @property(strong, nonatomic) Organization *organization;
+@property (strong, nonatomic) Project *project;
 @end

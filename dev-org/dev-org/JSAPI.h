@@ -15,7 +15,7 @@
 
 typedef void(^DevCompletion)(NSArray<Developer *> *allDevs);
 typedef void(^NPOCompletion)(NSArray<Organization *> *allOrganizations);
-typedef void(^ProjectCompletion)(Project *project);
+typedef void(^ProjectCompletion)(NSArray<Project *> *projects);
 typedef void(^ReviewCompletion)(Review *review);
 
 @interface JSAPI : NSObject
@@ -25,7 +25,7 @@ typedef void(^ReviewCompletion)(Review *review);
 
 +(void)fetchAllOrganizations:(NPOCompletion)completion;
 
-+(void)fetchProject:(ProjectCompletion)completion;
++(void)fetchProjects:(ProjectCompletion)completion;
 
 +(void)fetchReview:(ReviewCompletion)completion;
 

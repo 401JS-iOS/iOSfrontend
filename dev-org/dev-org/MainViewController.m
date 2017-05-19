@@ -10,10 +10,28 @@
 #import "Developer.h"
 #import "Organization.h"
 #import "JSAPIPOSTRequest.h"
+
 @interface MainViewController ()
 
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) UIView *defaultView;
 
+@property (weak, nonatomic) IBOutlet UITextField *loginUsername;
+@property (weak, nonatomic) IBOutlet UITextField *loginPassword;
+
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *userTypeControl;
+
+@property (weak, nonatomic) IBOutlet UIView *devSubView;
+@property (weak, nonatomic) IBOutlet UISwitch *devIsAvailable;
+@property (weak, nonatomic) IBOutlet UITextField *devServicesTextField;
+
+@property (weak, nonatomic) IBOutlet UIView *orgSubView;
+@property (weak, nonatomic) IBOutlet UITextField *orgNameTextField;
+@property (weak, nonatomic) IBOutlet UITextView *orgDescriptionTextView;
 
 @end
 
@@ -40,7 +58,7 @@
         NSLog(@"No user found!");
     } else {
         NSLog(@"User ID is: %@", self.user.userID);
-        NSLog(@"Developer: %@", self.user.isDev);
+        NSLog(@"Developer: %hhu", self.user.isDev);
         
         NSLog(@"%@", self.user.description);
         
@@ -56,8 +74,7 @@
     }
     
 }
-
-- (IBAction)delete:(UIBarButtonItem *)sender {
+- (IBAction)resetUser:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -67,61 +84,141 @@
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"user"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+}
+
+-(void)userSignUpWithEmail:(NSString*)email username:(NSString*)username password:(NSString*)password isDev:(Boolean)isDev {
+    
+    User *newUser = [[User alloc] init];
+        newUser.username = username;
+        newUser.email = email;
+    newUser.password = password;
+        newUser.isDev = isDev;
+        self.user = newUser;
+    
     __weak typeof(self) bruce = self;
     [JSAPIPOSTRequest postUser:self.user withCompletion:^(NSString *identifier) {
         __strong typeof(bruce) hulk = bruce;
-        hulk.user.userToken = identifier;
         
-//        [JSAPIPOSTRequest postDev:self.user withCompletion:^(Developer *user) {
-//            <#code#>
-//        }];
+        // Remove quotation marks from string before assigning to user
+        hulk.user.userToken = [identifier componentsSeparatedByString:@"\""][1];
+        
+        
+        if (hulk.user.isDev) {
+            [hulk createDeveloper];
+        } else {
+            [hulk createOrganization];
+        }
     }];
+    
+    
 }
 
-- (IBAction)createDev:(UIButton *)sender {
-    [self createDeveloper];
+- (IBAction)showSignUpViewPressed:(UIButton *)sender {
+    UIView *signUpView = [[[NSBundle mainBundle] loadNibNamed:@"SignUpView" owner:self options:nil] objectAtIndex:0];
+    
+    self.defaultView = self.view;
+    [self.navigationController setNavigationBarHidden:YES];
+    self.view = signUpView;
+    [self.userTypeControl setSelectedSegmentIndex: UISegmentedControlNoSegment];
+    CALayer *descriptionLayer = self.orgDescriptionTextView.layer;
+  
+    descriptionLayer.borderWidth = 0.5;
+    descriptionLayer.cornerRadius = 5;
+    descriptionLayer.borderColor = [UIColor colorWithRed:0.76 green:0.76 blue:0.76 alpha:1.0].CGColor;
+//    [self.orgDescriptionTextView setNeedsDisplay];
+    
+    [self.userTypeControl addTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+    
 }
+
+- (void)userTypeChanged {
+    if (self.userTypeControl.selectedSegmentIndex == 0) {
+        [self.devSubView setHidden:NO];
+        [self.orgSubView setHidden:YES];
+    } else {
+        [self.devSubView setHidden:YES];
+        [self.orgSubView setHidden:NO];
+    }
+}
+
+- (IBAction)createAccountPressed:(UIButton *)sender {
+    
+    Boolean isDev;
+    if (self.userTypeControl.selectedSegmentIndex == 0) {
+        isDev = YES;
+    } else {
+        isDev = NO;
+    }
+    NSLog(@"Developer: %hhu", isDev);
+    [self userSignUpWithEmail:self.emailTextField.text username:self.usernameTextField.text password:self.passwordTextField.text isDev:isDev];
+    
+    [self.userTypeControl removeTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+    self.view = self.defaultView;
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (IBAction)cancelSignUpPressed:(UIButton *)sender {
+    [self.userTypeControl removeTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+    self.view = self.defaultView;
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+
+- (IBAction)createDev:(UIButton *)sender {
+//    [self userSignUp];
+}
+
 -(void)createDeveloper{
+    [self saveUser];
+    
     Developer *newDev = [[Developer alloc] init];
     
-    newDev.userID = @"devID";
-    newDev.isDev = @1;
-    newDev.username = @"MrDeveloper";
-    newDev. email = @"dev@aol.com";
+    newDev.userToken = self.user.userToken;
+    newDev.isDev = YES;
     newDev.address = @"2510 S 12th St";
     newDev.city = @"Seattle";
     newDev.state = @"WA";
     newDev.phone = @"206-555-1212";
     newDev.profilePic = @"image.jpg";
-    newDev.websites = @[@"github.com", @"devsite.com"];
+    newDev.websites = [NSArray arrayWithObjects:@"github.com", @"devsite.com", nil];
     newDev.languages = [NSArray arrayWithObjects: @"Objective-C", @"Esperanto", nil];
     newDev.services=[NSArray arrayWithObjects:@"full stack", @"iOS", @"Android", nil];
     newDev.isAvailable=YES;
     newDev.radius=@"10 miles";
     
     self.user  = newDev;
-    [self saveUser];
-    User *user = [[User alloc] init];
-    user.username = @"jay3";
-    user.email = @"jay2@com";
-    user.isDev = @1;
-    user.password = @"asdfasdf";
-    
-    
-    [JSAPIPOSTRequest postUser:user withCompletion:^(NSString *identifier) {
+    __weak typeof(self) bruce = self;
+    [JSAPIPOSTRequest postDev:newDev withCompletion:^(NSDictionary *devDictionary) {
+        __strong typeof(bruce) hulk = bruce;
         
-        NSLog(@"Token:%@",identifier);
+        NSString *userID = [devDictionary valueForKey:@"userID"];
+        [hulk.user setValue:userID forKey:@"userID"];
+        
+        NSString *devID = [devDictionary valueForKey:@"_id"];
+        [hulk.user setValue:devID forKey:@"devID"];
+        
+        NSString *username = [devDictionary valueForKey:@"username"];
+        [hulk.user setValue:username forKey:@"username"];
+        
+        NSString *email = [devDictionary valueForKey:@"email"];
+        [hulk.user setValue:email forKey:@"email"];
+        
+        [hulk saveUser];
     }];
+    
 }
 
 - (IBAction)createOrg:(UIButton *)sender {
+//    [self userSignUp];
+}
+
+-(void)createOrganization{
+
     Organization *newOrg = [[Organization alloc ]init];
     
-    newOrg.userID = @"orgID";
-    newOrg.isDev = @0;
-    newOrg.username = @"MrNPO";
-    newOrg.email = @"npo@msn";
-    newOrg.address = @"2512 S 12th St";
+    newOrg.userToken = self.user.userToken;
+    newOrg.isDev = NO;
+//    newOrg.address = @"2512 S 12th St";
     newOrg.city = @"Seattle";
     newOrg.state = @"WA";
     newOrg.phone = @"206-555-1212";
@@ -130,7 +227,26 @@
     newOrg.org = @"We are a legitimate charity.";
     
     self.user = newOrg;
-    [self saveUser];
+
+    __weak typeof(self) bruce = self;
+    [JSAPIPOSTRequest postNPO:newOrg withCompletion:^(NSDictionary *orgDictionary) {
+        __strong typeof(bruce) hulk = bruce;
+        
+        NSString *userID = [orgDictionary valueForKey:@"userID"];
+        [hulk.user setValue:userID forKey:@"userID"];
+        
+        NSString *orgID = [orgDictionary valueForKey:@"_id"];
+        [hulk.user setValue:orgID forKey:@"orgID"];
+        
+        NSString *username = [newOrg valueForKey:@"username"];
+        [hulk.user setValue:username forKey:@"username"];
+        
+        NSString *email = [newOrg valueForKey:@"email"];
+        [hulk.user setValue:email forKey:@"email"];
+        
+        [hulk saveUser];
+    }];
+
 }
 
 @end

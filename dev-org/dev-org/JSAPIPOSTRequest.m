@@ -16,7 +16,7 @@
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
-    NSDictionary *projectDictionary = @{@"devs": project.devs, @"npoId": project.npoId, @"projectDescription": project.projectDescription, @"reviews": project.reviews, @"service": project.service};
+    NSDictionary *projectDictionary = @{@"npoId": project.orgID, @"projectDescription": project.projectDescription, @"reviews": project.reviews, @"service": project.service};
     
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:projectDictionary
@@ -65,7 +65,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
     
-    NSDictionary *userDictionary = @{@"email":user.email, @"username":user.username, @"password":user.password, @"isDev":user.isDev};
+    NSDictionary *userDictionary = @{@"email":user.email, @"username":user.username, @"password":user.password, @"isDev":[NSNumber numberWithBool:user.isDev]};
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:userDictionary
                                                       options:NSJSONWritingPrettyPrinted error:&error];
@@ -100,7 +100,7 @@
     NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/npo"];
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSLog(@"%@", session);
+
     NSDictionary *NPODictionary = @{@"org": user.org, @"city": user.city, @"state": user.state, @"phone": user.state, @"profilePic": user.profilePic, @"websites": user.websites};
     
     NSError *error = nil;
@@ -115,24 +115,24 @@
     [request setValue:userToken forHTTPHeaderField:@"Authorization"];
     [request setHTTPBody:userData];
     
-    
-    
     if (!error) {
-        
         
         [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"Error: %@", error.localizedDescription);
             }
             
-            NSDictionary *NPOObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                      options:NSJSONReadingMutableContainers
+            NSString *stringForm = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"String: %@", stringForm);
+            
+            NSDictionary *orgObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:kNilOptions
                                                                         error:nil];
             
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"Token:%@", NPOObject);
-                    completion(NPOObject);
+                    NSLog(@"orgObject:%@", orgObject);
+                    completion(orgObject);
                 });
             }
         }] resume];
@@ -146,6 +146,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
     NSDictionary *devDictionary = @{@"city": user.city, @"state": user.state, @"phone": user.phone, @"profilePic": user.profilePic, @"websites": user.websites, @"languages":user.languages, @"services":user.services};
+
 
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:devDictionary
@@ -169,13 +170,17 @@
                 NSLog(@"Error: %@", error.localizedDescription);
             }
             
+            NSString *stringForm = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"String: %@", stringForm);
+            
             NSDictionary *devObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                       options:NSJSONReadingMutableContainers
+                                                                       options:kNilOptions
                                                                          error:nil];
+            NSLog(@"data: %@", data);
             
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"Token:%@", devObject);
+                    NSLog(@"devObject:%@", devObject);
                     completion(devObject);
                 });
             }
