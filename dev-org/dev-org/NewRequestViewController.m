@@ -24,6 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [self.view addGestureRecognizer:tapGesture];
     
     self.projectTypePicker.dataSource = self;
     self.projectTypePicker.delegate = self;
@@ -33,6 +38,10 @@
     self.projectDescription.layer.borderWidth = 2.0;
     self.projectDescription.layer.cornerRadius = 8.0;
     self.projectDescription.layer.borderColor = [UIColor lightGrayColor].CGColor;
+}
+
+-(void)hideKeyBoard {
+    [self.projectDescription resignFirstResponder];
 }
 
 - (IBAction)submitPressed:(UIButton *)sender {
