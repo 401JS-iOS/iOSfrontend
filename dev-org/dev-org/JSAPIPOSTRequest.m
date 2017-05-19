@@ -10,13 +10,14 @@
 
 @implementation JSAPIPOSTRequest
 
-+(void)postProject:(Project *)project :(User *)user withCompletion:(ProjectPOSTCompletion)completion{
++(void)postProject:(Project *)project withToken:(NSString *)userToken andCompletion:(ProjectPOSTCompletion)completion{
     
-    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/npo"];
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/npo/%@/project", project.orgID];
+    //npoID/project
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
-    NSDictionary *projectDictionary = @{@"npoId": project.orgID, @"projectDescription": project.projectDescription, @"reviews": project.reviews, @"service": project.service};
+    NSDictionary *projectDictionary = @{@"npoId": project.orgID, @"dev":project.dev, @"projectDescription": project.projectDescription, @"reviews": project.reviews, @"service": project.service};
     
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:projectDictionary
@@ -24,7 +25,7 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[databaseURL standardizedURL]];
     request.HTTPMethod = @"POST";
-    NSString *userToken = [NSString stringWithFormat:@"Bearer %@",user.userToken];
+//    NSString *userToken = [NSString stringWithFormat:@"Bearer %@",org.userToken];
     
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:userToken forHTTPHeaderField:@"Authorization"];

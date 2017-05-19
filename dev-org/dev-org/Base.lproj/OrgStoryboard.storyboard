@@ -86,6 +86,7 @@
                                 <rect key="frame" x="0.0" y="580" width="375" height="30"/>
                                 <state key="normal" title="New Request"/>
                                 <connections>
+                                    <action selector="newRequestButtonPressed:" destination="Wqq-GX-tfe" eventType="touchUpInside" id="qYI-Ih-amK"/>
                                     <segue destination="FtE-AA-BLF" kind="presentation" identifier="createNewOpenRequest" id="yoZ-bX-czr"/>
                                 </connections>
                             </button>
@@ -110,7 +111,7 @@
         <!--New Request-->
         <scene sceneID="yIo-Sm-MRG">
             <objects>
-                <viewController title="New Request" id="FtE-AA-BLF" customClass="NewRequestViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewRequestViewController" title="New Request" id="FtE-AA-BLF" customClass="NewRequestViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bVU-tG-99W"/>
                         <viewControllerLayoutGuide type="bottom" id="m9y-JQ-dm9"/>

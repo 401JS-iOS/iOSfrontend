@@ -92,6 +92,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28ACC81D1ECE932E00433691 /* DevUI */ = {
+			isa = PBXGroup;
+			children = (
+				28ACC81A1ECE802D00433691 /* NPODetailsViewController.h */,
+				28ACC81B1ECE802D00433691 /* NPODetailsViewController.m */,
+				28F1F51D1ECCDC7300D6D1AB /* ProjectViewController.h */,
+				28F1F51E1ECCDC7300D6D1AB /* ProjectViewController.m */,
+				286DD9561ECBFA4200A03917 /* DevHomeViewController.h */,
+				286DD9571ECBFA4200A03917 /* DevHomeViewController.m */,
+			);
+			name = DevUI;
+			sourceTree = "<group>";
+		};
+		28ACC81E1ECE934000433691 /* OrgUI */ = {
+			isa = PBXGroup;
+			children = (
+				2806DB4B1ECB9B2700126188 /* DevProfileViewController.h */,
+				2806DB4C1ECB9B2700126188 /* DevProfileViewController.m */,
+				624F8D811ECBE5CA000C20FA /* NewRequestViewController.h */,
+				624F8D821ECBE5CA000C20FA /* NewRequestViewController.m */,
+				624F8D5C1ECA48C6000C20FA /* OrgHomeViewController.h */,
+				624F8D5D1ECA48C6000C20FA /* OrgHomeViewController.m */,
+			);
+			name = OrgUI;
+			sourceTree = "<group>";
+		};
 		624F8D4A1ECA48C6000C20FA = {
 			isa = PBXGroup;
 			children = (
@@ -138,20 +164,10 @@
 		624F8D6D1ECA4950000C20FA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				28ACC81A1ECE802D00433691 /* NPODetailsViewController.h */,
-				28ACC81B1ECE802D00433691 /* NPODetailsViewController.m */,
+				28ACC81D1ECE932E00433691 /* DevUI */,
 				624F8D861ECCD077000C20FA /* MainViewController.h */,
 				624F8D871ECCD077000C20FA /* MainViewController.m */,
-				28F1F51D1ECCDC7300D6D1AB /* ProjectViewController.h */,
-				28F1F51E1ECCDC7300D6D1AB /* ProjectViewController.m */,
-				2806DB4B1ECB9B2700126188 /* DevProfileViewController.h */,
-				2806DB4C1ECB9B2700126188 /* DevProfileViewController.m */,
-				624F8D811ECBE5CA000C20FA /* NewRequestViewController.h */,
-				624F8D821ECBE5CA000C20FA /* NewRequestViewController.m */,
-				624F8D5C1ECA48C6000C20FA /* OrgHomeViewController.h */,
-				624F8D5D1ECA48C6000C20FA /* OrgHomeViewController.m */,
-				286DD9561ECBFA4200A03917 /* DevHomeViewController.h */,
-				286DD9571ECBFA4200A03917 /* DevHomeViewController.m */,
+				28ACC81E1ECE934000433691 /* OrgUI */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

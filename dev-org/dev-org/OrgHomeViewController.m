@@ -43,6 +43,11 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.allDevs.count;
 }
+- (IBAction)newRequestButtonPressed:(UIButton *)sender {
+    UIStoryboard *storyboard = self.storyboard;
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NewRequestViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellIdentifier = @"DevCell";

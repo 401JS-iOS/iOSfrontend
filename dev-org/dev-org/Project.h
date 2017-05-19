@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *projectID;
 @property (strong, nonatomic) NSString *projectDescription;
 @property (strong, nonatomic) NSString *orgID;
+@property (strong, nonatomic) NSString *dev;
 @property(strong, nonatomic) NSString *projStatus;
 @property (strong, nonatomic) NSArray<Review *> *reviews;
 @property (strong, nonatomic) NSString *service;

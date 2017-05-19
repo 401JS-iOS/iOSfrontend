@@ -21,7 +21,7 @@ typedef void(^NPOPOSTCompletion)(NSDictionary *user);
 typedef void(^DevPOSTCompletion)(NSDictionary *user);
 
 
-+(void)postProject:(Project *)project :(User *)user withCompletion:(ProjectPOSTCompletion)completion;
++ (void)postProject:(Project *)project withToken:(NSString *)userToken andCompletion:(ProjectPOSTCompletion)completion;
 + (void)postUser:(User *)user withCompletion:(UserPOSTCompletion)completion;
 + (void)postNPO:(Organization *)user withCompletion:(NPOPOSTCompletion)completion;
 + (void)postDev:(Developer *)user withCompletion:(DevPOSTCompletion)completion;

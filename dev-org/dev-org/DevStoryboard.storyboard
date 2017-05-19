@@ -148,7 +148,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtG-lS-2yW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="RiX-eB-msO">
+                <swipeGestureRecognizer direction="up" id="RiX-eB-msO">
                     <connections>
                         <action selector="swipeGesture:" destination="FmJ-xN-Y4F" id="Euh-Xx-Uht"/>
                     </connections>
@@ -241,6 +241,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QUC-yc-WbV" firstAttribute="centerX" secondItem="7JX-4N-B6o" secondAttribute="centerX" id="6CK-V1-wYD"/>
                             <constraint firstItem="8RT-vn-hw8" firstAttribute="centerX" secondItem="7JX-4N-B6o" secondAttribute="centerX" id="E2u-tD-TUO"/>
@@ -259,6 +260,9 @@
                             <constraint firstItem="Ng1-DU-U7o" firstAttribute="top" secondItem="pGE-zK-R0U" secondAttribute="bottom" constant="8" id="rGS-Ji-bu5"/>
                             <constraint firstItem="9Gp-pa-DZp" firstAttribute="top" secondItem="f3G-PM-rOP" secondAttribute="bottom" constant="8" id="yJz-l8-Jqf"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8SY-zA-YJ3" appends="YES" id="e7q-fi-gLY"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="NPOCityLabel" destination="JCs-6D-AQ2" id="lei-IH-RhZ"/>
@@ -270,6 +274,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDx-Nl-Gc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="8SY-zA-YJ3">
+                    <connections>
+                        <action selector="swippedDown:" destination="xIi-WW-4IV" id="Ifa-FV-7d0"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-107046" y="-126"/>
         </scene>
