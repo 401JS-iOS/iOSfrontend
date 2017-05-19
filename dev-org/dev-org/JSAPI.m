@@ -10,6 +10,39 @@
 
 @implementation JSAPI
 
++(void)signInWithUsername:(NSString*)username password:(NSString*)password andCompletion:(SignInCompletion)completion {
+    
+    // Create an encoded basic authorization header, which is anything but basic in Objective-C.
+    // Found solution by @catsby on Stack Overflow, with followup by @Dirk: http://stackoverflow.com/a/1974566 
+    NSString *authString = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSData *authData = [authString dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://d3volunteers.herokuapp.com/api/signin"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:authValue forHTTPHeaderField:@"authorization"];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error.localizedDescription);
+                                                    } else {
+                                                        NSString *token = [[NSString alloc]initWithData:data
+                                                                                               encoding:NSASCIIStringEncoding];
+                                                        if (completion) {
+                                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                                completion(token);
+                                                            });
+                                                        }
+                                                    }
+                                                }];
+    [dataTask resume];
+    
+}
+
 +(void)fetchAllDevelopers:(DevCompletion)completion{
     
     NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/devs"];
