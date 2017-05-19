@@ -76,6 +76,7 @@
         DevProfileViewController *destVC = segue.destinationViewController;
         int index = (int)self.devCollectionView.indexPathsForSelectedItems.firstObject.row;
         destVC.developer = [self.allDevs objectAtIndex:index];
+        destVC.organization = self.org;
     }
 
 }

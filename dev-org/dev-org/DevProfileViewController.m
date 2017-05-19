@@ -44,6 +44,7 @@ NSLog(@"email%@",self.developer.email);
     if ([segue.identifier isEqualToString:@"createNewRequest"]) {
         NewRequestViewController *requestVC = segue.destinationViewController;
         requestVC.developer = self.developer;
+        requestVC.organization = self.organization;
     }
 }
 

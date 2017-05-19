@@ -17,7 +17,7 @@
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
-    NSDictionary *projectDictionary = @{@"npoId": project.orgID, @"dev":project.dev, @"projectDescription": project.projectDescription, @"reviews": project.reviews, @"service": project.service};
+    NSDictionary *projectDictionary = @{@"npoId": project.orgID, @"dev":project.dev, @"projectDescription": project.projectDescription, @"service": project.service};
     
     NSError *error = nil;
     NSData *userData =[NSJSONSerialization dataWithJSONObject:projectDictionary

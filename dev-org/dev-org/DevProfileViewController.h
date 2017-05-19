@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "Developer.h"
+#import "Organization.h"
 
 @interface DevProfileViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *devDetailProfileImage;
@@ -20,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *devDetailPhoneLabel;
 
 @property(strong, nonatomic) Developer *developer;
+@property(strong, nonatomic) Organization *organization;
 
 @end

@@ -82,7 +82,7 @@
     if ([segue.identifier isEqualToString:@"showOrgStoryboard"]) {
         OrgHomeViewController *orgVC = segue.destinationViewController.childViewControllers[0];
         NSLog(@"OrgHome token: %@",self.org.userToken);
-        NSLog(@"OrgHome orgID: %@",self.org.orgID);
+//        NSLog(@"OrgHome orgID: %@",self.org.orgID);
 
         orgVC.org = self.org;
     } else {
