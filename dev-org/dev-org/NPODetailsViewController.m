@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    *NPOImage;
+    @property (weak, nonatomic) IBOutlet NSLayoutConstraint *NPONameLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *NPOCityLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *NPOStateLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *NPOEmailLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *NPOPhoneLabel;
+
 }
 - (IBAction)closeButtonPressed:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

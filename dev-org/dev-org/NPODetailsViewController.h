@@ -16,4 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *NPOEmailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *NPOPhoneLabel;
 
+@property(strong, nonatomic) Organization *organization;
+@property (strong, nonatomic) Project *project;
+
 @end

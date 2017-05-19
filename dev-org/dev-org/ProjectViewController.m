@@ -9,6 +9,7 @@
 #import "ProjectViewController.h"
 #import "JSAPI.h"
 #import "Project.h"
+#import "NPODetailsViewController.h"
 
 
 @interface ProjectViewController ()
@@ -34,6 +35,11 @@
     self.projectDescriptionLabel.text = self.project.projectDescription;
 }
 - (IBAction)swipeGesture:(UISwipeGestureRecognizer *)sender {
+    
+    NPODetailsViewController *NPODetailsVC = [[NPODetailsViewController alloc] init];
+    
+    NPODetailsVC.organization = self.organization;
+    NPODetailsVC.project = self.project;
     
     UIStoryboard *storyboard = self.storyboard;
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NPODetailsViewController"];
