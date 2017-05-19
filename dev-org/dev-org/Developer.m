@@ -17,6 +17,7 @@
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
+    [coder encodeObject:_devID forKey:@"devID"];
     [coder encodeObject:_languages forKey:@"languages"];
     [coder encodeObject:_services forKey:@"services"];
     [coder encodeBool:_isAvailable forKey:@"isAvailable"];
@@ -30,6 +31,7 @@
         return nil;
     }
     
+    _devID = [decoder decodeObjectForKey:@"devID"];
     _languages = [decoder decodeObjectForKey:@"languages"];
     _services = [decoder decodeObjectForKey:@"services"];
     _isAvailable = [decoder decodeBoolForKey:@"isAvailable"];

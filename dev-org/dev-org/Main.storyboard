@@ -94,6 +94,9 @@
                                 <state key="normal" title="Reset user">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetUser:" destination="79x-iv-g5o" eventType="touchUpInside" id="l9x-gu-4x9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
