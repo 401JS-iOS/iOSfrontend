@@ -26,10 +26,12 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *userTypeControl;
 
 @property (weak, nonatomic) IBOutlet UIView *devSubView;
+@property (weak, nonatomic) IBOutlet UISwitch *devIsAvailable;
+@property (weak, nonatomic) IBOutlet UITextField *devServicesTextField;
+
 @property (weak, nonatomic) IBOutlet UIView *orgSubView;
-
-
-
+@property (weak, nonatomic) IBOutlet UITextField *orgNameTextField;
+@property (weak, nonatomic) IBOutlet UITextView *orgDescriptionTextView;
 
 @end
 
@@ -118,6 +120,13 @@
     [self.navigationController setNavigationBarHidden:YES];
     self.view = signUpView;
     [self.userTypeControl setSelectedSegmentIndex: UISegmentedControlNoSegment];
+    CALayer *descriptionLayer = self.orgDescriptionTextView.layer;
+  
+    descriptionLayer.borderWidth = 0.5;
+    descriptionLayer.cornerRadius = 5;
+    descriptionLayer.borderColor = [UIColor colorWithRed:0.76 green:0.76 blue:0.76 alpha:1.0].CGColor;
+//    [self.orgDescriptionTextView setNeedsDisplay];
+    
     [self.userTypeControl addTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
     
 }
