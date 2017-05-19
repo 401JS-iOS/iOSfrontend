@@ -45,7 +45,7 @@
 
 +(void)fetchAllDevelopers:(DevCompletion)completion{
     
-    NSString *urlString = [NSString stringWithFormat:@"http://localhost:3000/devs"];
+    NSString *urlString = [NSString stringWithFormat:@"https://d3volunteers.herokuapp.com/api/devlist"];
     NSURL *databaseURL = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSLog(@"%@", session);
@@ -65,7 +65,14 @@
         
         for (NSDictionary *devDictionary in rootObject) {
             Developer *dev = [[Developer alloc] init];
-            [dev setValuesForKeysWithDictionary:devDictionary];
+            dev.devID = [devDictionary valueForKey:@"_id"];
+            dev.phone = [devDictionary valueForKey:@"phone"];
+            dev.state = [devDictionary valueForKey:@"state"];
+            dev.city = [devDictionary valueForKey:@"city"];
+            dev.userID = [devDictionary valueForKey:@"userID"];
+            dev.services = [devDictionary valueForKey:@"services"];
+            dev.languages = [devDictionary valueForKey:@"languages"];
+            dev.websites = [devDictionary valueForKey:@"websites"];
             [allDevs addObject:dev];
         }
             
