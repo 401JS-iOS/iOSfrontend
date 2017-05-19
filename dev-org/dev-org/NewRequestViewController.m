@@ -36,12 +36,12 @@
     Project *newProject = [[Project alloc] init];
     newProject.service = self.projectTypes[[self.projectTypePicker selectedRowInComponent:0]];
     newProject.projectDescription = self.projectDescription.text;
-    if (self.developer) {
-       newProject.devs = [[NSArray alloc] initWithObjects:self.developer, nil];
-    }
-    NSLog(@"Project type: %@", newProject.service);
-    NSLog(@"Project description: %@", newProject.projectDescription);
-    NSLog(@"Project developers: %@", newProject.devs);
+//    if (self.developer) {
+//       newProject.devs = [[NSArray alloc] initWithObjects:self.developer, nil];
+//    }
+//    NSLog(@"Project type: %@", newProject.service);
+//    NSLog(@"Project description: %@", newProject.projectDescription);
+//    NSLog(@"Project developers: %@", newProject.devs);
     
     
     [self dismissViewControllerAnimated:YES completion:nil];
