@@ -7,7 +7,7 @@
 //
 
 #import "OrgHomeViewController.h"
-
+#import "NewRequestViewController.h"
 @interface OrgHomeViewController ()<UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *devCollectionView;
 
@@ -45,7 +45,9 @@
 }
 - (IBAction)newRequestButtonPressed:(UIButton *)sender {
     UIStoryboard *storyboard = self.storyboard;
-    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NewRequestViewController"];
+    NewRequestViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NewRequestViewController"];
+    NSLog(@"OrgHome token: %@",self.org.userToken);
+    vc.organization = self.org;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -74,7 +76,6 @@
         DevProfileViewController *destVC = segue.destinationViewController;
         int index = (int)self.devCollectionView.indexPathsForSelectedItems.firstObject.row;
         destVC.developer = [self.allDevs objectAtIndex:index];
-
     }
 
 }

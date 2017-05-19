@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.projectTypePicker.dataSource = self;
     self.projectTypePicker.delegate = self;
     self.projectTypes = @[@"Website", @"iOS App", @"Android App"];
@@ -41,11 +42,13 @@
     newProject.service = self.projectTypes[[self.projectTypePicker selectedRowInComponent:0]];
     newProject.projectDescription = self.projectDescription.text;
     newProject.orgID = self.organization.orgID;
-    self.project = newProject;
     
     if (self.developer) {
         newProject.dev = [NSString stringWithFormat:@"%@", self.developer.devID];
     }
+    
+//    [self.organization.projects addObject:newProject];
+    
     NSLog(@"Project type: %@", newProject.service);
     NSLog(@"Project description: %@", newProject.projectDescription);
     __weak typeof(self) bruce = self;

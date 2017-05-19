@@ -9,6 +9,7 @@
 #import "ProjectViewController.h"
 #import "JSAPI.h"
 #import "Project.h"
+#import "NPODetailsViewController.h"
 
 
 @interface ProjectViewController ()
@@ -36,7 +37,13 @@
 - (IBAction)swipeGesture:(UISwipeGestureRecognizer *)sender {
     
     UIStoryboard *storyboard = self.storyboard;
-    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NPODetailsViewController"];
+    NPODetailsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NPODetailsViewController"];
+    
+//    NPODetailsViewController *NPODetailsVC = [[NPODetailsViewController alloc]init];
+   
+    vc.organization = self.organization;
+    vc.project = self.project;
+ 
     [self presentViewController:vc animated:YES completion:nil];
 
 }

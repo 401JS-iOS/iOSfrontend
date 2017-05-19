@@ -47,9 +47,6 @@
                                 <state key="normal" title="CREATE Organization">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="createOrg:" destination="79x-iv-g5o" eventType="touchUpInside" id="01X-rv-BmW"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGN-Qe-XW2">
                                 <rect key="frame" x="16" y="317" width="343" height="30"/>

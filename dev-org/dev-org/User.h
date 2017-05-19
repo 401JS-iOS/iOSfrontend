@@ -11,7 +11,7 @@
 
 @interface User : NSObject
 @property (strong, nonatomic) NSString* userToken;
-@property (nonatomic) Boolean isDev;
+@property (nonatomic) BOOL isDev;
 @property (strong, nonatomic) NSString* userID;
 @property (strong, nonatomic) NSString* username;
 @property (strong, nonatomic) NSString* password;
