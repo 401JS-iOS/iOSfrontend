@@ -237,7 +237,7 @@
 				TargetAttributes = {
 					624F8D521ECA48C6000C20FA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 4C7AR59H6U;
+						DevelopmentTeam = 5EB567WJ73;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -421,7 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4C7AR59H6U;
+				DEVELOPMENT_TEAM = 5EB567WJ73;
 				INFOPLIST_FILE = "dev-org/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roberthatfield.dev-org";
@@ -433,7 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4C7AR59H6U;
+				DEVELOPMENT_TEAM = 5EB567WJ73;
 				INFOPLIST_FILE = "dev-org/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.roberthatfield.dev-org";
