@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *cityTextField;
+@property (weak, nonatomic) IBOutlet UITextField *stateTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *websiteTextField;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *userTypeControl;
 
@@ -74,6 +78,12 @@
     }
     
 }
+
+- (IBAction)loginPressed:(UIButton *)sender {
+    
+}
+
+
 - (IBAction)resetUser:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -91,7 +101,7 @@
     User *newUser = [[User alloc] init];
         newUser.username = username;
         newUser.email = email;
-    newUser.password = password;
+        newUser.password = password;
         newUser.isDev = isDev;
         self.user = newUser;
     
@@ -125,10 +135,8 @@
     descriptionLayer.borderWidth = 0.5;
     descriptionLayer.cornerRadius = 5;
     descriptionLayer.borderColor = [UIColor colorWithRed:0.76 green:0.76 blue:0.76 alpha:1.0].CGColor;
-//    [self.orgDescriptionTextView setNeedsDisplay];
     
     [self.userTypeControl addTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
-    
 }
 
 - (void)userTypeChanged {
@@ -151,21 +159,12 @@
     }
     NSLog(@"Developer: %hhu", isDev);
     [self userSignUpWithEmail:self.emailTextField.text username:self.usernameTextField.text password:self.passwordTextField.text isDev:isDev];
-    
-    [self.userTypeControl removeTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
-    self.view = self.defaultView;
-    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (IBAction)cancelSignUpPressed:(UIButton *)sender {
     [self.userTypeControl removeTarget:self action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
     self.view = self.defaultView;
     [self.navigationController setNavigationBarHidden:NO];
-}
-
-
-- (IBAction)createDev:(UIButton *)sender {
-//    [self userSignUp];
 }
 
 -(void)createDeveloper{
@@ -175,16 +174,15 @@
     
     newDev.userToken = self.user.userToken;
     newDev.isDev = YES;
-    newDev.address = @"2510 S 12th St";
-    newDev.city = @"Seattle";
-    newDev.state = @"WA";
-    newDev.phone = @"206-555-1212";
-    newDev.profilePic = @"image.jpg";
-    newDev.websites = [NSArray arrayWithObjects:@"github.com", @"devsite.com", nil];
-    newDev.languages = [NSArray arrayWithObjects: @"Objective-C", @"Esperanto", nil];
-    newDev.services=[NSArray arrayWithObjects:@"full stack", @"iOS", @"Android", nil];
-    newDev.isAvailable=YES;
-    newDev.radius=@"10 miles";
+    newDev.city = self.cityTextField.text;
+    newDev.state = self.stateTextField.text;
+    newDev.phone = self.phoneTextField.text;
+//    newDev.profilePic = @"image.jpg";
+    newDev.websites = [NSArray arrayWithObject:self.websiteTextField.text];
+//    newDev.languages = [NSArray arrayWithObjects: @"Objective-C", @"Esperanto", nil];
+    newDev.services=[NSArray arrayWithObject:self.devServicesTextField.text];
+    newDev.isAvailable=self.devIsAvailable.isOn;
+//    newDev.radius=@"10 miles";
     
     self.user  = newDev;
     __weak typeof(self) bruce = self;
@@ -204,12 +202,12 @@
         [hulk.user setValue:email forKey:@"email"];
         
         [hulk saveUser];
+        [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+        hulk.view = hulk.defaultView;
+        [hulk.navigationController setNavigationBarHidden:NO];
+        [hulk checkUserStatus];
     }];
     
-}
-
-- (IBAction)createOrg:(UIButton *)sender {
-//    [self userSignUp];
 }
 
 -(void)createOrganization{
@@ -218,13 +216,13 @@
     
     newOrg.userToken = self.user.userToken;
     newOrg.isDev = NO;
-//    newOrg.address = @"2512 S 12th St";
-    newOrg.city = @"Seattle";
-    newOrg.state = @"WA";
-    newOrg.phone = @"206-555-1212";
-    newOrg.profilePic = @"image.jpg";
-    newOrg.websites = @[@"github.com", @"devsite.com"];
-    newOrg.org = @"We are a legitimate charity.";
+    newOrg.city = self.cityTextField.text;
+    newOrg.state = self.stateTextField.text;
+    newOrg.phone = self.phoneTextField.text;
+//    newOrg.profilePic = @"image.jpg";
+    newOrg.websites = [NSArray arrayWithObject:self.websiteTextField.text];
+    newOrg.org = self.orgNameTextField.text;
+    newOrg.orgDesc = self.orgDescriptionTextView.text;
     
     self.user = newOrg;
 
@@ -238,13 +236,17 @@
         NSString *orgID = [orgDictionary valueForKey:@"_id"];
         [hulk.user setValue:orgID forKey:@"orgID"];
         
-        NSString *username = [newOrg valueForKey:@"username"];
+        NSString *username = [orgDictionary valueForKey:@"username"];
         [hulk.user setValue:username forKey:@"username"];
         
-        NSString *email = [newOrg valueForKey:@"email"];
+        NSString *email = [orgDictionary valueForKey:@"email"];
         [hulk.user setValue:email forKey:@"email"];
         
         [hulk saveUser];
+        [hulk.userTypeControl removeTarget:hulk action:@selector(userTypeChanged) forControlEvents:UIControlEventValueChanged];
+        hulk.view = hulk.defaultView;
+        [hulk.navigationController setNavigationBarHidden:NO];
+        [hulk checkUserStatus];
     }];
 
 }
