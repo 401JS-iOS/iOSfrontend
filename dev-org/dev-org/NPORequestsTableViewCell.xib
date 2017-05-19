@@ -17,10 +17,10 @@
             <rect key="frame" x="0.0" y="0.0" width="408" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="408" height="130"/>
+                <rect key="frame" x="0.0" y="0.0" width="408" height="129.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WWn-1c-DlK">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="org" translatesAutoresizingMaskIntoConstraints="NO" id="WWn-1c-DlK">
                         <rect key="frame" x="0.0" y="0.0" width="129" height="130"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="WWn-1c-DlK" secondAttribute="height" multiplier="129:130" id="DoY-ff-CJP"/>
@@ -45,6 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.98161881350000002" green="0.98161881350000002" blue="0.98161881350000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="cjo-ys-5CZ" firstAttribute="top" secondItem="29h-Tp-m7b" secondAttribute="bottom" constant="8" id="8Os-jG-ge1"/>
                     <constraint firstItem="cYZ-uN-8T6" firstAttribute="leading" secondItem="cjo-ys-5CZ" secondAttribute="leading" id="9v5-ze-w6d"/>
@@ -69,4 +70,7 @@
             <point key="canvasLocation" x="79" y="97"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="org" width="116" height="116"/>
+    </resources>
 </document>
