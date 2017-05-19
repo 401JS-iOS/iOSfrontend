@@ -48,8 +48,32 @@
     [super viewDidLoad];
     [self checkUserStatus];
     // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
+    
+    [self.view addGestureRecognizer:tapGesture];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+-(void)hideKeyBoard {
+    [self.loginUsername resignFirstResponder];
+    [self.loginPassword resignFirstResponder];
+    [self.emailTextField resignFirstResponder];
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.cityTextField resignFirstResponder];
+    [self.stateTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+    [self.websiteTextField resignFirstResponder];
+    [self.devServicesTextField resignFirstResponder];
+    [self.orgNameTextField resignFirstResponder];
+    [self.orgDescriptionTextView resignFirstResponder];
+}
 - (void)checkUserStatus {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
